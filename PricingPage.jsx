@@ -7,6 +7,7 @@ import { AuroraText } from './src/components/magicui/aurora-text';
 import { RainbowButton } from './src/components/magicui/rainbow-button';
 import { InteractiveGridPattern } from './src/components/magicui/interactive-grid-pattern';
 import { GridPattern } from './src/components/magicui/grid-pattern';
+import { Ripple } from './src/components/magicui/ripple';
 import Marquee from './src/components/magicui/marquee';
 import FAQAccordion from './src/components/magicui/faq-accordion';
 
@@ -272,6 +273,11 @@ const PricingPage = () => {
             100% { opacity: 1; transform: translateY(0) scale(1); }
           }
 
+          @keyframes ripple {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(4); opacity: 0; }
+          }
+
           @media (max-width: 768px) {
             .transformation-grid {
               grid-template-columns: 1fr !important;
@@ -349,10 +355,34 @@ const PricingPage = () => {
           .premium-card.featured {
             transform: scale(1.05);
             box-shadow: 0 12px 40px rgba(122, 33, 135, 0.15);
+            position: relative;
+            z-index: 10;
           }
 
           .premium-card.featured:hover {
-            transform: scale(1.05) translateY(-8px);
+            transform: scale(1.05) translateY(-4px);
+            box-shadow: 
+              0 15px 30px rgba(122, 33, 135, 0.18),
+              0 25px 50px rgba(122, 33, 135, 0.08);
+          }
+
+          .premium-card.featured::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: radial-gradient(circle at center, rgba(122, 33, 135, 0.05), transparent 70%);
+            border-radius: 22px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+            pointer-events: none;
+          }
+
+          .premium-card.featured:hover::before {
+            opacity: 1;
           }
 
           .popular-badge {
@@ -494,10 +524,10 @@ const PricingPage = () => {
       <section 
         style={{
           background: 'linear-gradient(135deg, #fafbfc 0%, #f8f9fa 100%)',
-          padding: '3rem 0',
+          padding: '3rem 0 8rem 0',
           textAlign: 'center',
           position: 'relative',
-          overflow: 'hidden'
+          overflow: 'visible'
         }}
       >
         {/* Gradient Blobs */}
@@ -745,8 +775,10 @@ const PricingPage = () => {
       {/* Feature Comparison Section */}
       <section style={{ 
         background: 'linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)',
-        padding: '6rem 0 0 0',
-        position: 'relative' 
+        padding: '2rem 0 0 0',
+        position: 'relative',
+        marginTop: '-5rem',
+        paddingTop: '5rem'
       }}>
         <div className="container">
           {/* Section Header */}
@@ -812,7 +844,7 @@ const PricingPage = () => {
       {/* Feature Categories Section */}
       <section style={{ 
         background: 'linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)',
-        padding: '0 0 6rem 0'
+        padding: '0 0 0 0'
       }}>
         <div className="container">
           {/* Feature Categories */}
@@ -1166,10 +1198,13 @@ const PricingPage = () => {
 
       {/* Career Transformation Section */}
       <section style={{
-        background: '#ffffff',
-        padding: '4rem 0'
+        background: 'linear-gradient(180deg, #f8f9fa 0%, #ffffff 20%, #ffffff 100%)',
+        padding: '2rem 0 4rem 0',
+        position: 'relative',
+        overflow: 'hidden'
       }}>
-        <div className="container">
+        
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
             <p style={{
               fontSize: '0.95rem',
