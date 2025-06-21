@@ -178,10 +178,6 @@ export const FlickeringGrid = ({
     <div
       ref={containerRef}
       className={cn2(`h-full w-full ${className}`)}
-      style={{ 
-        backgroundColor: 'rgba(255, 0, 0, 0.1)', // Debug: red background to see if component renders
-        border: '2px solid red' // Debug: border to see component bounds
-      }}
       {...props}
     >
       <canvas
@@ -190,22 +186,8 @@ export const FlickeringGrid = ({
         style={{
           width: canvasSize.width,
           height: canvasSize.height,
-          backgroundColor: 'rgba(0, 255, 0, 0.1)', // Debug: green background for canvas
         }}
       />
-      {/* Debug info */}
-      <div style={{ 
-        position: 'absolute', 
-        top: 10, 
-        left: 10, 
-        color: 'black', 
-        backgroundColor: 'white', 
-        padding: '5px',
-        fontSize: '12px',
-        zIndex: 1000 
-      }}>
-        FlickeringGrid Debug: {canvasSize.width}x{canvasSize.height} | InView: {isInView ? 'Yes' : 'No'}
-      </div>
     </div>
   );
 };

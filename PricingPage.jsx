@@ -8,6 +8,8 @@ import { RainbowButton } from './src/components/magicui/rainbow-button';
 import { InteractiveGridPattern } from './src/components/magicui/interactive-grid-pattern';
 import { GridPattern } from './src/components/magicui/grid-pattern';
 import { Ripple } from './src/components/magicui/ripple';
+import { FlickeringGrid } from './src/components/magicui/flickering-grid';
+import { RetroGrid } from './src/components/magicui/retro-grid';
 import Marquee from './src/components/magicui/marquee';
 import FAQAccordion from './src/components/magicui/faq-accordion';
 
@@ -1798,40 +1800,64 @@ const PricingPage = () => {
           {/* Final Conversion CTA */}
           <div style={{ marginTop: '4rem' }}>
             <div style={{ 
-              background: 'linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)',
+              background: 'linear-gradient(135deg, #7A2187 0%, #9B4AA3 50%, #5A1865 100%)',
               padding: '4rem 2rem',
               borderRadius: '20px',
               position: 'relative',
-              overflow: 'hidden'
+              overflow: 'hidden',
+              border: '2px solid rgba(255, 255, 255, 0.2)',
+              boxShadow: '0 20px 40px rgba(0, 0, 0, 0.15)'
             }}>
-              {/* Interactive Grid Pattern */}
-              <InteractiveGridPattern
-                width={40}
-                height={40}
-                squares={[20, 12]}
-                className="opacity-10"
-                squaresClassName="hover:fill-white/20 hover:stroke-white/30 transition-all duration-200"
+              {/* Subtle Grid Pattern Overlay */}
+              <div 
+                className="absolute inset-0"
                 style={{
-                  zIndex: 1
+                  zIndex: 1,
+                  backgroundImage: `
+                    repeating-conic-gradient(
+                      from 0deg at 0% 0%,
+                      rgba(255, 255, 255, 0.08) 0deg 90deg,
+                      transparent 90deg 180deg,
+                      rgba(255, 255, 255, 0.08) 180deg 270deg,
+                      transparent 270deg 360deg
+                    )
+                  `,
+                  backgroundSize: '40px 40px'
+                }}
+              />
+              
+              {/* Subtle Flickering Grid Overlay */}
+              <FlickeringGrid
+                className="absolute inset-0"
+                squareSize={2}
+                gridGap={8}
+                color="rgb(255, 255, 255)"
+                maxOpacity={0.15}
+                flickerChance={0.03}
+                style={{
+                  zIndex: 2
                 }}
               />
               
               <div style={{
                 position: 'relative',
-                zIndex: 2,
+                zIndex: 3,
                 textAlign: 'center',
                 maxWidth: '800px',
                 margin: '0 auto'
               }}>
                 <AuroraText 
                   className="text-4xl font-bold mb-6"
-                  colors={["#7A2187", "#9B4AA3", "#5A1865", "#7A2187"]}
+                  colors={["#ffffff", "#f8f9fa", "#e2e8f0", "#ffffff"]}
                   speed={2}
                   style={{
-                    fontSize: '2.25rem',
-                    fontWeight: '700',
-                    marginBottom: '1.5rem',
-                    display: 'block'
+                    fontSize: '3rem',
+                    fontWeight: '800',
+                    marginBottom: '2rem',
+                    display: 'block',
+                    lineHeight: '1.1',
+                    letterSpacing: '-0.02em',
+                    color: 'white'
                   }}
                 >
                   Your Career Can't Wait Any Longer
@@ -1839,56 +1865,76 @@ const PricingPage = () => {
                 
                 <p style={{
                   fontSize: '1.25rem',
-                  color: '#5F6368',
+                  color: '#f1f5f9',
                   lineHeight: '1.6',
-                  marginBottom: '1rem'
+                  marginBottom: '1rem',
+                  textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'
                 }}>
                   While you're thinking about it, your competition is already getting ahead with Premium.
                 </p>
                 
                 <p style={{
                   fontSize: '1.125rem',
-                  color: '#202124',
-                  fontWeight: '600',
-                  marginBottom: '2.5rem'
+                  color: '#e2e8f0',
+                  fontWeight: '500',
+                  marginBottom: '3rem',
+                  textShadow: '0 1px 3px rgba(0, 0, 0, 0.3)',
+                  fontStyle: 'italic'
                 }}>
                   Don't let another opportunity slip by.
                 </p>
                 
-                <div style={{ marginBottom: '2rem' }}>
+                <div style={{ 
+                  marginBottom: '3rem',
+                  position: 'relative',
+                  display: 'inline-block'
+                }}>
                   <RainbowButton 
+                    variant="outline"
                     style={{ 
                       fontSize: '1.2rem',
                       padding: '1.25rem 3rem',
-                      fontWeight: '600'
+                      fontWeight: '600',
+                      position: 'relative',
+                      zIndex: 1
                     }}
                   >
-                    Claim Your Premium Access
+                    Get Premium
                   </RainbowButton>
+                  
+                  {/* Animated Rainbow glow underneath */}
+                  <div style={{
+                    position: 'absolute',
+                    bottom: '-8px',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    width: '180px',
+                    height: '25px',
+                    background: 'linear-gradient(90deg, #ff6b6b, #ffd93d, #6bcf7f, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7, #ff6b6b)',
+                    backgroundSize: '400% 100%',
+                    borderRadius: '50px',
+                    filter: 'blur(15px)',
+                    opacity: 0.7,
+                    zIndex: 0,
+                    animation: 'rainbow-flow 3s ease-in-out infinite'
+                  }} />
+                  
+                  <style jsx>{`
+                    @keyframes rainbow-flow {
+                      0%, 100% { background-position: 0% 50%; }
+                      50% { background-position: 100% 50%; }
+                    }
+                  `}</style>
                 </div>
                 
                 <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '2rem',
+                  textAlign: 'center',
                   fontSize: '0.9rem',
-                  color: '#5F6368',
-                  flexWrap: 'wrap',
-                  justifyContent: 'center'
+                  color: 'rgba(255, 255, 255, 0.8)'
                 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <div style={{
-                      width: '6px',
-                      height: '6px',
-                      borderRadius: '50%',
-                      background: '#28A745',
-                      animation: 'pulse 2s infinite'
-                    }} />
-                    <span><NumberTicker value={847} /> users upgraded this week</span>
-                  </div>
-                  <span>•</span>
-                  <span><strong>7-day</strong> guarantee</span>
+                  <span><strong style={{ color: 'white' }}>7-day money back guarantee</strong></span>
                 </div>
+                
               </div>
             </div>
           </div>
