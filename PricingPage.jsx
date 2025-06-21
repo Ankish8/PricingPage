@@ -844,9 +844,45 @@ const PricingPage = () => {
       {/* Feature Categories Section */}
       <section style={{ 
         background: 'linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)',
-        padding: '0 0 0 0'
+        padding: '0 0 0 0',
+        position: 'relative',
+        overflow: 'hidden'
       }}>
-        <div className="container">
+        {/* Gradient Blobs - Original Intensity */}
+        <div 
+          style={{
+            position: 'absolute',
+            top: '30%',
+            left: '-450px',
+            transform: 'translateY(-50%)',
+            width: '600px',
+            height: '600px',
+            borderRadius: '600px',
+            background: 'linear-gradient(180deg, rgba(242, 47, 176, 0.2) 0%, rgba(245, 138, 37, 0.00) 100%, rgba(112, 97, 163, 0.25) 100%)',
+            filter: 'blur(50px)',
+            zIndex: 0,
+            pointerEvents: 'none',
+            opacity: 1
+          }}
+        />
+        <div 
+          style={{
+            position: 'absolute',
+            top: '70%',
+            right: '-450px',
+            transform: 'translateY(-50%)',
+            width: '600px',
+            height: '600px',
+            borderRadius: '600px',
+            background: 'linear-gradient(180deg, rgba(33, 135, 167, 0.15) 0%, rgba(122, 33, 135, 0.1) 60%, rgba(247, 179, 43, 0.00) 100%)',
+            filter: 'blur(50px)',
+            zIndex: 0,
+            pointerEvents: 'none',
+            opacity: 1
+          }}
+        />
+        
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           {/* Feature Categories */}
           <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
             
@@ -1456,202 +1492,6 @@ const PricingPage = () => {
         </div>
       </section>
 
-      {/* Social Proof Bridge */}
-      <section style={{
-        background: 'white',
-        padding: '2.5rem 0',
-        borderTop: '1px solid #e8eaed',
-        borderBottom: '1px solid #e8eaed'
-      }}>
-        <div className="container">
-          <div style={{
-            textAlign: 'center',
-            maxWidth: '650px',
-            margin: '0 auto'
-          }}>
-            <p style={{
-              fontSize: '1rem',
-              color: '#5F6368',
-              marginBottom: '0.5rem'
-            }}>
-              Don't just take our word for it.
-            </p>
-            <h3 style={{
-              fontSize: '1.5rem',
-              fontWeight: '600',
-              color: '#202124',
-              lineHeight: '1.3',
-              margin: 0
-            }}>
-              Here's what happens when talented professionals like you choose Premium
-            </h3>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section style={{
-        background: '#f8f9fa',
-        padding: '4rem 0'
-      }}>
-        <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <h2 style={{
-              fontSize: '2rem',
-              fontWeight: '600',
-              color: '#202124',
-              marginBottom: '1rem'
-            }}>
-              Join 50,000+ Professionals Who Transformed Their Careers
-            </h2>
-            <p style={{
-              fontSize: '1.1rem',
-              color: '#5F6368',
-              maxWidth: '600px',
-              margin: '0 auto'
-            }}>
-              See how premium members are landing dream jobs faster
-            </p>
-          </div>
-          
-          <div style={{ position: 'relative', overflow: 'hidden' }}>
-            <div style={{
-              position: 'absolute',
-              left: 0,
-              top: 0,
-              bottom: 0,
-              width: '100px',
-              background: 'linear-gradient(to right, #f8f9fa, transparent)',
-              zIndex: 10
-            }} />
-            <div style={{
-              position: 'absolute',
-              right: 0,
-              top: 0,
-              bottom: 0,
-              width: '100px',
-              background: 'linear-gradient(to left, #f8f9fa, transparent)',
-              zIndex: 10
-            }} />
-            
-            <Marquee pauseOnHover className="[--duration:60s]">
-              {[
-                {
-                  name: "Priya Sharma",
-                  role: "Software Engineer at Google",
-                  content: "NCET Plus program helped me crack Google's interview. The premium mock tests and mentor guidance were game-changers!",
-                  rating: 5,
-                  avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
-                },
-                {
-                  name: "Rahul Verma",
-                  role: "Data Scientist at Microsoft",
-                  content: "From 2 job rejections to 5 offers! Premium career roadmap showed me exactly what skills I was missing.",
-                  rating: 5,
-                  avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
-                },
-                {
-                  name: "Anita Desai",
-                  role: "Product Manager at Amazon",
-                  content: "The unlimited job applications feature helped me apply to 200+ positions. Got my dream PM role in 3 months!",
-                  rating: 5,
-                  avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
-                },
-                {
-                  name: "Vikram Singh",
-                  role: "DevOps Engineer at Flipkart",
-                  content: "Premium badge made me visible to recruiters I never thought would notice me. 4x more interview calls!",
-                  rating: 5,
-                  avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
-                },
-                {
-                  name: "Sneha Patel",
-                  role: "UX Designer at Zomato",
-                  content: "Weekly mentor calls with industry experts gave me insider tips that no course teaches. Worth every rupee!",
-                  rating: 5,
-                  avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face"
-                },
-                {
-                  name: "Arjun Nair",
-                  role: "Full Stack Developer at Paytm",
-                  content: "5 NCET attempts helped me improve from 60% to 95%. Finally got noticed by top-tier companies!",
-                  rating: 5,
-                  avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face"
-                }
-              ].map((testimonial, index) => (
-                <div key={index} style={{
-                  background: 'white',
-                  borderRadius: '16px',
-                  padding: '1.5rem',
-                  margin: '0 1rem',
-                  width: '300px',
-                  flexShrink: 0,
-                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
-                  border: '1px solid #e8eaed'
-                }}>
-                  <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    marginBottom: '1rem'
-                  }}>
-                    <img 
-                      src={testimonial.avatar}
-                      alt={testimonial.name}
-                      style={{
-                        width: '50px',
-                        height: '50px',
-                        borderRadius: '50%',
-                        marginRight: '1rem',
-                        objectFit: 'cover'
-                      }}
-                    />
-                    <div>
-                      <h4 style={{
-                        fontSize: '1rem',
-                        fontWeight: '600',
-                        color: '#202124',
-                        margin: 0,
-                        marginBottom: '0.25rem'
-                      }}>
-                        {testimonial.name}
-                      </h4>
-                      <p style={{
-                        fontSize: '0.875rem',
-                        color: '#5F6368',
-                        margin: 0
-                      }}>
-                        {testimonial.role}
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div style={{
-                    display: 'flex',
-                    marginBottom: '0.75rem'
-                  }}>
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <i key={i} className="fas fa-star" style={{ 
-                        color: '#FFC107', 
-                        fontSize: '0.875rem',
-                        marginRight: '0.125rem'
-                      }} />
-                    ))}
-                  </div>
-                  
-                  <p style={{
-                    fontSize: '0.875rem',
-                    color: '#202124',
-                    lineHeight: '1.4',
-                    margin: 0
-                  }}>
-                    "{testimonial.content}"
-                  </p>
-                </div>
-              ))}
-            </Marquee>
-          </div>
-        </div>
-      </section>
 
       {/* Call to Action Bridge */}
       <section style={{
