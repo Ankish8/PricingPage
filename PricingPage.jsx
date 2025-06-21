@@ -297,16 +297,20 @@ const PricingPage = () => {
           }
 
           .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: 3rem;
+            font-weight: 800;
             color: var(--gray-900);
             margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
           }
 
           .section-subtitle {
             font-size: 1.125rem;
             color: var(--gray-600);
             margin-bottom: 3rem;
+            line-height: 1.5;
+            font-weight: 400;
           }
 
           /* Pricing Cards */
@@ -377,9 +381,10 @@ const PricingPage = () => {
 
           .plan-name {
             font-size: 1.5rem;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--gray-900);
             margin-bottom: 1rem;
+            letter-spacing: -0.01em;
           }
 
           .price-container {
@@ -560,7 +565,7 @@ const PricingPage = () => {
             
             <h2 className="section-title">Choose Your <AuroraText>Premium</AuroraText> Plan</h2>
             <p className="section-subtitle">
-              <strong style={{ color: '#7A2187' }}>94% never reach their potential</strong> because they lack the right tools.
+              <strong style={{ color: '#7A2187', fontWeight: '700' }}>94% never reach their potential</strong> because they lack the right tools.
             </p>
             
             {/* Billing Toggle */}
@@ -695,23 +700,23 @@ const PricingPage = () => {
               <div className="features-list">
                 <div className="feature-item">
                   <i className="fas fa-door-open feature-icon" style={{ color: '#7A2187' }}></i>
-                  <span><strong>Unlimited</strong> job applications</span>
+                  <span><strong style={{ fontWeight: '700' }}>Unlimited</strong> job applications</span>
                 </div>
                 <div className="feature-item">
                   <i className="fas fa-star feature-icon" style={{ color: '#7A2187' }}></i>
-                  <span><strong>Premium badge</strong> & corporate visibility</span>
+                  <span><strong style={{ fontWeight: '700' }}>Premium badge</strong> & corporate visibility</span>
                 </div>
                 <div className="feature-item">
                   <i className="fas fa-award feature-icon" style={{ color: '#7A2187' }}></i>
-                  <span><strong>Full course access</strong> + certificates</span>
+                  <span><strong style={{ fontWeight: '700' }}>Full course access</strong> + certificates</span>
                 </div>
                 <div className="feature-item">
                   <i className="fas fa-gem feature-icon" style={{ color: '#7A2187' }}></i>
-                  <span><strong>NCET Plus program</strong> access</span>
+                  <span><strong style={{ fontWeight: '700' }}>NCET Plus program</strong> access</span>
                 </div>
                 <div className="feature-item">
                   <i className="fas fa-video feature-icon" style={{ color: '#7A2187' }}></i>
-                  <span><strong>Live mentor support</strong></span>
+                  <span><strong style={{ fontWeight: '700' }}>Live mentor support</strong></span>
                 </div>
               </div>
               
@@ -1440,6 +1445,42 @@ const PricingPage = () => {
                 </div>
               </MagicCard>
             </ShineBorder>
+          </div>
+          
+          
+          {/* CTA Section */}
+          <div style={{
+            textAlign: 'center',
+            maxWidth: '700px',
+            margin: '2rem auto 3rem auto',
+            position: 'relative',
+            zIndex: 3
+          }}>
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '1.5rem'
+            }}>
+              <RainbowButton>
+                Get Premium Now
+              </RainbowButton>
+              
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '2rem',
+                fontSize: '0.875rem',
+                color: '#5F6368',
+                flexWrap: 'wrap',
+                justifyContent: 'center'
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <i className="fas fa-shield-alt" style={{ color: '#FFD700' }} />
+                  <span>7-day guarantee</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
