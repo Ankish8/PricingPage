@@ -1,12 +1,59 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+
+// Custom hook for animated numbers
+const useAnimatedNumber = (initialValue, duration = 700) => {
+  const [displayValue, setDisplayValue] = useState(initialValue);
+  const animationRef = useRef(null);
+
+  const animateTo = (targetValue) => {
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
+    }
+
+    const startValue = displayValue;
+    const startTime = performance.now();
+
+    const animate = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Easing function (ease-out)
+      const easeOut = 1 - Math.pow(1 - progress, 3);
+      
+      const currentValue = startValue + (targetValue - startValue) * easeOut;
+      setDisplayValue(Math.round(currentValue));
+
+      if (progress < 1) {
+        animationRef.current = requestAnimationFrame(animate);
+      }
+    };
+
+    animationRef.current = requestAnimationFrame(animate);
+  };
+
+  return [displayValue, animateTo];
+};
 
 const PricingPage = () => {
   const [selectedCycle, setSelectedCycle] = useState('annual');
   
   const priceData = {
-    monthly: { price: '₹2,000', period: '/month', savings: '' },
-    halfyearly: { price: '₹20,000', period: '/6 months', savings: '₹4,000 savings' },
-    annual: { price: '₹15,000', period: '/year', savings: '₹9,000 savings' }
+    monthly: { price: '₹2,000', period: '/month', savings: 0 },
+    halfyearly: { price: '₹20,000', period: '/6 months', savings: 4000 },
+    annual: { price: '₹15,000', period: '/year', savings: 9000 }
+  };
+
+  // Use animated number hook for savings
+  const [animatedSavings, animateSavings] = useAnimatedNumber(priceData[selectedCycle].savings);
+  
+  // Format the display savings
+  const displaySavings = animatedSavings > 0 ? `₹${animatedSavings.toLocaleString('en-IN')} savings` : '';
+
+  // Handle cycle change with animation
+  const handleCycleChange = (newCycle) => {
+    const newSavings = priceData[newCycle].savings;
+    animateSavings(newSavings);
+    setSelectedCycle(newCycle);
   };
 
   return (
@@ -351,7 +398,7 @@ const PricingPage = () => {
                 {['monthly', 'halfyearly', 'annual'].map((cycle) => (
                   <button
                     key={cycle}
-                    onClick={() => setSelectedCycle(cycle)}
+                    onClick={() => handleCycleChange(cycle)}
                     style={{
                       padding: '0.75rem 1.5rem',
                       border: 'none',
@@ -404,23 +451,15 @@ const PricingPage = () => {
               
               <div className="features-list">
                 <div className="feature-item">
-                  <i className="fas fa-check feature-icon"></i>
+                  <i className="fas fa-exclamation-triangle feature-icon" style={{ color: '#FFC107' }}></i>
                   <span>1 job application per category</span>
                 </div>
                 <div className="feature-item">
-                  <i className="fas fa-check feature-icon"></i>
-                  <span>Basic profile building</span>
-                </div>
-                <div className="feature-item">
-                  <i className="fas fa-check feature-icon"></i>
-                  <span>Access to hackathons</span>
-                </div>
-                <div className="feature-item">
-                  <i className="fas fa-check feature-icon"></i>
+                  <i className="fas fa-exclamation-triangle feature-icon" style={{ color: '#FFC107' }}></i>
                   <span>1 NCET test attempt/year</span>
                 </div>
                 <div className="feature-item">
-                  <i className="fas fa-check feature-icon"></i>
+                  <i className="fas fa-exclamation-triangle feature-icon" style={{ color: '#FFC107' }}></i>
                   <span>5 sandbox instances</span>
                 </div>
                 <div className="feature-item limited">
@@ -446,53 +485,42 @@ const PricingPage = () => {
                   <span className="price">{priceData[selectedCycle].price}</span>
                   <span className="period">{priceData[selectedCycle].period}</span>
                 </div>
-                {priceData[selectedCycle].savings && (
-                  <div className="price-note">{priceData[selectedCycle].savings}</div>
+                {displaySavings && (
+                  <div className="price-note">{displaySavings}</div>
                 )}
                 <p className="plan-description">Everything you need to excel</p>
               </div>
               
               <div className="features-list">
                 <div className="feature-item">
-                  <i className="fas fa-check feature-icon"></i>
+                  <i className="fas fa-infinity feature-icon" style={{ color: '#7A2187' }}></i>
                   <span><strong>Unlimited</strong> job applications</span>
                 </div>
                 <div className="feature-item">
-                  <i className="fas fa-check feature-icon"></i>
+                  <i className="fas fa-crown feature-icon" style={{ color: '#7A2187' }}></i>
                   <span><strong>Premium badge</strong> & corporate visibility</span>
                 </div>
                 <div className="feature-item">
-                  <i className="fas fa-check feature-icon"></i>
-                  <span><strong>Full AI career roadmap</strong></span>
-                </div>
-                <div className="feature-item">
-                  <i className="fas fa-check feature-icon"></i>
-                  <span><strong>5 NCET test attempts</strong></span>
-                </div>
-                <div className="feature-item">
-                  <i className="fas fa-check feature-icon"></i>
-                  <span><strong>Unlimited</strong> sandbox access</span>
-                </div>
-                <div className="feature-item">
-                  <i className="fas fa-check feature-icon"></i>
+                  <i className="fas fa-graduation-cap feature-icon" style={{ color: '#7A2187' }}></i>
                   <span><strong>Full course access</strong> + certificates</span>
                 </div>
                 <div className="feature-item">
-                  <i className="fas fa-check feature-icon"></i>
+                  <i className="fas fa-rocket feature-icon" style={{ color: '#7A2187' }}></i>
                   <span><strong>NCET Plus program</strong> access</span>
                 </div>
                 <div className="feature-item">
-                  <i className="fas fa-check feature-icon"></i>
+                  <i className="fas fa-user-tie feature-icon" style={{ color: '#7A2187' }}></i>
                   <span><strong>Live mentor support</strong></span>
-                </div>
-                <div className="feature-item">
-                  <i className="fas fa-check feature-icon"></i>
-                  <span><strong>Priority support</strong></span>
                 </div>
               </div>
               
-              <button className="cta-button primary">Start Free Trial</button>
-              <p className="trial-note">7-day free trial • No credit card required</p>
+              <button className="cta-button primary">Start Your Journey</button>
+              <div className="trial-note" style={{ textAlign: 'center' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
+                  <i className="fas fa-shield-alt" style={{ color: '#28A745', fontSize: '0.875rem' }}></i>
+                  <span>7-day money back guarantee</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
