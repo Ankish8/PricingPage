@@ -1163,89 +1163,6 @@ const PricingPage = () => {
         </div>
       </section>
 
-      {/* Transition to Transformation */}
-      <section style={{
-        background: 'linear-gradient(135deg, #fafbfc 0%, #ffffff 100%)',
-        padding: '2rem 0',
-        position: 'relative',
-        overflow: 'hidden',
-        borderTop: '1px solid #f1f3f4',
-        borderBottom: '1px solid #f1f3f4'
-      }}>
-        {/* MagicUI Grid Pattern */}
-        <GridPattern
-          width={80}
-          height={80}
-          x={-1}
-          y={-1}
-          className="text-gray-200"
-          style={{
-            opacity: 0.4,
-            zIndex: 1,
-            maskImage: 'radial-gradient(600px circle at center, white, transparent)',
-            WebkitMaskImage: 'radial-gradient(600px circle at center, white, transparent)'
-          }}
-        />
-        
-        <div className="container">
-          <div style={{
-            textAlign: 'center',
-            maxWidth: '700px',
-            margin: '0 auto',
-            position: 'relative',
-            zIndex: 3
-          }}>
-            <h2 style={{
-              fontSize: '2.25rem',
-              fontWeight: '700',
-              color: '#202124',
-              marginBottom: '0.75rem',
-              lineHeight: '1.2'
-            }}>
-              Stop Reading. Start Transforming.
-            </h2>
-            
-            <p style={{
-              fontSize: '1.125rem',
-              color: '#5F6368',
-              lineHeight: '1.6',
-              margin: '0 0 1.5rem 0'
-            }}>
-              See the exact difference Premium makes in <strong style={{ color: '#7A2187' }}>real careers</strong>, <strong style={{ color: '#7A2187' }}>real numbers</strong>, <strong style={{ color: '#7A2187' }}>real results</strong>.
-            </p>
-            
-            <div style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              gap: '1rem'
-            }}>
-              <RainbowButton>
-                Get Premium Now
-              </RainbowButton>
-              
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '2rem',
-                fontSize: '0.875rem',
-                color: '#5F6368',
-                flexWrap: 'wrap',
-                justifyContent: 'center'
-              }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <i className="fas fa-shield-alt" style={{ color: '#FFD700' }} />
-                  <span>7-day guarantee</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <i className="fas fa-piggy-bank" style={{ color: '#28A745' }} />
-                  <span><strong>₹9,000</strong> savings</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Career Transformation Section */}
       <section style={{
@@ -1682,7 +1599,7 @@ const PricingPage = () => {
         </div>
       </section>
 
-      {/* Objection Handling Bridge */}
+      {/* Call to Action Bridge */}
       <section style={{
         background: 'linear-gradient(135deg, #fafbfc 0%, #ffffff 100%)',
         padding: '2rem 0',
@@ -1691,6 +1608,7 @@ const PricingPage = () => {
         borderTop: '1px solid #f1f3f4',
         borderBottom: '1px solid #f1f3f4'
       }}>
+        {/* MagicUI Grid Pattern */}
         <GridPattern
           width={80}
           height={80}
@@ -1720,17 +1638,47 @@ const PricingPage = () => {
               marginBottom: '0.75rem',
               lineHeight: '1.2'
             }}>
-              <span style={{ color: '#7A2187' }}>Still Have Questions?</span>
+              Stop Reading. Start Transforming.
             </h2>
             
             <p style={{
               fontSize: '1.125rem',
               color: '#5F6368',
               lineHeight: '1.6',
-              margin: 0
+              margin: '0 0 1.5rem 0'
             }}>
-              We've got answers to help you make the right decision about <strong style={{ color: '#7A2187' }}>Premium</strong>.
+              See the exact difference Premium makes in <strong style={{ color: '#7A2187' }}>real careers</strong>, <strong style={{ color: '#7A2187' }}>real numbers</strong>, <strong style={{ color: '#7A2187' }}>real results</strong>.
             </p>
+            
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '1rem'
+            }}>
+              <RainbowButton>
+                Get Premium Now
+              </RainbowButton>
+              
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '2rem',
+                fontSize: '0.875rem',
+                color: '#5F6368',
+                flexWrap: 'wrap',
+                justifyContent: 'center'
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <i className="fas fa-shield-alt" style={{ color: '#FFD700' }} />
+                  <span>7-day guarantee</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <i className="fas fa-piggy-bank" style={{ color: '#28A745' }} />
+                  <span><strong>₹9,000</strong> savings</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
