@@ -723,6 +723,26 @@ const PricingPage = () => {
                   <span className="price">{priceData[selectedCycle].price}</span>
                   <span className="period">{priceData[selectedCycle].period}</span>
                 </div>
+                {displaySavings && (
+                  <div style={{
+                    textAlign: 'center',
+                    marginTop: '0.75rem',
+                    marginBottom: '0.5rem'
+                  }}>
+                    <span style={{
+                      display: 'inline-block',
+                      background: 'rgba(40, 167, 69, 0.1)',
+                      color: '#28A745',
+                      padding: '0.25rem 0.625rem',
+                      borderRadius: '12px',
+                      fontSize: '0.8125rem',
+                      fontWeight: '500',
+                      border: '1px solid rgba(40, 167, 69, 0.2)'
+                    }}>
+                      {displaySavings}
+                    </span>
+                  </div>
+                )}
                 <p className="plan-description">Everything you need to excel</p>
               </div>
               
