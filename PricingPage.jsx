@@ -1203,6 +1203,25 @@ const PricingPage = () => {
         position: 'relative',
         overflow: 'hidden'
       }}>
+        {/* Subtle Dashed Grid Background */}
+        <GridPattern
+          width={30}
+          height={30}
+          x={-1}
+          y={-1}
+          strokeDasharray={"4 2"}
+          className="opacity-20"
+          style={{
+            maskImage: 'radial-gradient(400px circle at center, white, transparent)',
+            WebkitMaskImage: 'radial-gradient(400px circle at center, white, transparent)',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            zIndex: 0
+          }}
+        />
         
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
