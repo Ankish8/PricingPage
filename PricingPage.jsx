@@ -861,8 +861,7 @@ const PricingPage = () => {
         top: '0',
         background: 'linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)',
         zIndex: 10,
-        padding: '1rem 0',
-        borderBottom: '1px solid #e8eaed'
+        padding: '1.5rem 0'
       }}>
         <div style={{
           display: 'grid',
@@ -871,7 +870,8 @@ const PricingPage = () => {
           maxWidth: '1000px',
           margin: '0 auto',
           alignItems: 'center',
-          padding: '0 1rem'
+          padding: '0 1rem',
+          borderBottom: '1px solid #e8eaed'
         }}>
           <div>
             <h4 style={{ fontSize: '0.875rem', fontWeight: '500', color: '#5F6368', margin: 0, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
@@ -892,11 +892,10 @@ const PricingPage = () => {
       </div>
 
       {/* Feature Categories Section */}
-      <section style={{ 
+      <section data-comparison-section style={{ 
         background: 'linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)',
         padding: '0 0 0 0',
-        position: 'relative',
-        overflow: 'hidden'
+        position: 'relative'
       }}>
         {/* Gradient Blobs - Original Intensity */}
         <div 
@@ -937,11 +936,12 @@ const PricingPage = () => {
           <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
             
             {/* Core Value Propositions */}
-            <div style={{ marginBottom: '4rem' }}>
+            <div data-section-id="core-benefits" style={{ marginBottom: '4rem' }}>
               <div style={{
                 position: 'sticky',
                 top: '57px',
-                background: 'linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)',
+                background: 'rgba(248, 249, 250, 0.95)',
+                backdropFilter: 'blur(10px)',
                 zIndex: 9,
                 padding: '1rem 1rem',
                 borderBottom: '2px solid #7A2187',
@@ -999,11 +999,12 @@ const PricingPage = () => {
             </div>
 
             {/* Learning & Development */}
-            <div style={{ marginBottom: '4rem' }}>
+            <div data-section-id="learning" style={{ marginBottom: '4rem' }}>
               <div style={{
                 position: 'sticky',
                 top: '57px',
-                background: 'linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)',
+                background: 'rgba(248, 249, 250, 0.95)',
+                backdropFilter: 'blur(10px)',
                 zIndex: 9,
                 padding: '1rem 1rem',
                 borderBottom: '2px solid #7A2187',
@@ -1061,11 +1062,12 @@ const PricingPage = () => {
             </div>
 
             {/* Skill Assessment & Practice */}
-            <div style={{ marginBottom: '4rem' }}>
+            <div data-section-id="assessment" style={{ marginBottom: '4rem' }}>
               <div style={{
                 position: 'sticky',
                 top: '57px',
-                background: 'linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)',
+                background: 'rgba(248, 249, 250, 0.95)',
+                backdropFilter: 'blur(10px)',
                 zIndex: 9,
                 padding: '1rem 1rem',
                 borderBottom: '2px solid #7A2187',
@@ -1131,11 +1133,12 @@ const PricingPage = () => {
             </div>
 
             {/* Exclusive Programs & Benefits */}
-            <div style={{ marginBottom: '4rem' }}>
+            <div data-section-id="exclusive" style={{ marginBottom: '4rem' }}>
               <div style={{
                 position: 'sticky',
                 top: '57px',
-                background: 'linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)',
+                background: 'rgba(248, 249, 250, 0.95)',
+                backdropFilter: 'blur(10px)',
                 zIndex: 9,
                 padding: '1rem 1rem',
                 borderBottom: '2px solid #7A2187',
@@ -1194,11 +1197,12 @@ const PricingPage = () => {
             </div>
 
             {/* Platform Features & Engagement */}
-            <div style={{ marginBottom: '4rem' }}>
+            <div data-section-id="platform" style={{ marginBottom: '4rem' }}>
               <div style={{
                 position: 'sticky',
                 top: '57px',
-                background: 'linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)',
+                background: 'rgba(248, 249, 250, 0.95)',
+                backdropFilter: 'blur(10px)',
                 zIndex: 9,
                 padding: '1rem 1rem',
                 borderBottom: '2px solid #7A2187',
@@ -1279,6 +1283,9 @@ const PricingPage = () => {
 
           </div>
         </div>
+        
+        {/* Spacer to ensure sticky headers unstick */}
+        <div style={{ height: '120px' }}></div>
       </section>
 
 
