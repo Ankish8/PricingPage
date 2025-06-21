@@ -721,9 +721,6 @@ const PricingPage = () => {
                   <span className="price">{priceData[selectedCycle].price}</span>
                   <span className="period">{priceData[selectedCycle].period}</span>
                 </div>
-                {displaySavings && (
-                  <div className="price-note">{displaySavings}</div>
-                )}
                 <p className="plan-description">Everything you need to excel</p>
               </div>
               
@@ -1492,6 +1489,171 @@ const PricingPage = () => {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section style={{
+        background: '#f8f9fa',
+        padding: '4rem 0',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <h2 style={{
+              fontSize: '2rem',
+              fontWeight: '600',
+              color: '#202124',
+              marginBottom: '1rem'
+            }}>
+              Join 50,000+ Professionals Who Transformed Their Careers
+            </h2>
+            <p style={{
+              fontSize: '1.1rem',
+              color: '#5F6368',
+              maxWidth: '600px',
+              margin: '0 auto'
+            }}>
+              See how premium members are landing dream jobs faster
+            </p>
+          </div>
+          
+          <div style={{ position: 'relative', overflow: 'hidden' }}>
+            <div style={{
+              position: 'absolute',
+              left: 0,
+              top: 0,
+              bottom: 0,
+              width: '100px',
+              background: 'linear-gradient(to right, #f8f9fa, transparent)',
+              zIndex: 10
+            }} />
+            <div style={{
+              position: 'absolute',
+              right: 0,
+              top: 0,
+              bottom: 0,
+              width: '100px',
+              background: 'linear-gradient(to left, #f8f9fa, transparent)',
+              zIndex: 10
+            }} />
+            
+            <Marquee pauseOnHover className="[--duration:60s]">
+              {[
+                {
+                  name: "Priya Sharma",
+                  role: "Software Engineer at Google",
+                  content: "NCET Plus program helped me crack Google's interview. The premium mock tests and mentor guidance were game-changers!",
+                  rating: 5,
+                  avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
+                },
+                {
+                  name: "Rahul Verma",
+                  role: "Data Scientist at Microsoft",
+                  content: "From 2 job rejections to 5 offers! Premium career roadmap showed me exactly what skills I was missing.",
+                  rating: 5,
+                  avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
+                },
+                {
+                  name: "Anita Desai",
+                  role: "Product Manager at Amazon",
+                  content: "The unlimited job applications feature helped me apply to 200+ positions. Got my dream PM role in 3 months!",
+                  rating: 5,
+                  avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
+                },
+                {
+                  name: "Vikram Singh",
+                  role: "DevOps Engineer at Flipkart",
+                  content: "Premium badge made me visible to recruiters I never thought would notice me. 4x more interview calls!",
+                  rating: 5,
+                  avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
+                },
+                {
+                  name: "Sneha Patel",
+                  role: "UX Designer at Zomato",
+                  content: "Weekly mentor calls with industry experts gave me insider tips that no course teaches. Worth every rupee!",
+                  rating: 5,
+                  avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face"
+                },
+                {
+                  name: "Arjun Nair",
+                  role: "Full Stack Developer at Paytm",
+                  content: "5 NCET attempts helped me improve from 60% to 95%. Finally got noticed by top-tier companies!",
+                  rating: 5,
+                  avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face"
+                }
+              ].map((testimonial, index) => (
+                <div key={index} style={{
+                  background: 'white',
+                  borderRadius: '16px',
+                  padding: '1.5rem',
+                  margin: '0 1rem',
+                  width: '300px',
+                  flexShrink: 0,
+                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+                  border: '1px solid #e8eaed'
+                }}>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    marginBottom: '1rem'
+                  }}>
+                    <img 
+                      src={testimonial.avatar}
+                      alt={testimonial.name}
+                      style={{
+                        width: '50px',
+                        height: '50px',
+                        borderRadius: '50%',
+                        marginRight: '1rem',
+                        objectFit: 'cover'
+                      }}
+                    />
+                    <div>
+                      <h4 style={{
+                        fontSize: '1rem',
+                        fontWeight: '600',
+                        color: '#202124',
+                        margin: 0,
+                        marginBottom: '0.25rem'
+                      }}>
+                        {testimonial.name}
+                      </h4>
+                      <p style={{
+                        fontSize: '0.875rem',
+                        color: '#5F6368',
+                        margin: 0
+                      }}>
+                        {testimonial.role}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div style={{
+                    display: 'flex',
+                    marginBottom: '0.75rem'
+                  }}>
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <i key={i} className="fas fa-star" style={{ 
+                        color: '#FFC107', 
+                        fontSize: '0.875rem',
+                        marginRight: '0.125rem'
+                      }} />
+                    ))}
+                  </div>
+                  
+                  <p style={{
+                    fontSize: '0.875rem',
+                    color: '#202124',
+                    lineHeight: '1.4',
+                    margin: 0
+                  }}>
+                    "{testimonial.content}"
+                  </p>
+                </div>
+              ))}
+            </Marquee>
+          </div>
+        </div>
+      </section>
 
       {/* Call to Action Bridge */}
       <section style={{
@@ -1566,10 +1728,6 @@ const PricingPage = () => {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   <i className="fas fa-shield-alt" style={{ color: '#FFD700' }} />
                   <span>7-day guarantee</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <i className="fas fa-piggy-bank" style={{ color: '#28A745' }} />
-                  <span><strong>₹9,000</strong> savings</span>
                 </div>
               </div>
             </div>
@@ -1728,8 +1886,6 @@ const PricingPage = () => {
                     }} />
                     <span><NumberTicker value={847} /> users upgraded this week</span>
                   </div>
-                  <span>•</span>
-                  <span><strong>₹9,000</strong> savings</span>
                   <span>•</span>
                   <span><strong>7-day</strong> guarantee</span>
                 </div>
