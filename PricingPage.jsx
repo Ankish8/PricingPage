@@ -3,6 +3,10 @@ import { ShimmerButton } from './src/components/magicui/shimmer-button';
 import { MagicCard } from './src/components/magicui/magic-card';
 import { ShineBorder } from './src/components/magicui/shine-border';
 import { NumberTicker } from './src/components/magicui/number-ticker';
+import { AuroraText } from './src/components/magicui/aurora-text';
+import { RainbowButton } from './src/components/magicui/rainbow-button';
+import { InteractiveGridPattern } from './src/components/magicui/interactive-grid-pattern';
+import { GridPattern } from './src/components/magicui/grid-pattern';
 import Marquee from './src/components/magicui/marquee';
 import FAQAccordion from './src/components/magicui/faq-accordion';
 
@@ -554,10 +558,9 @@ const PricingPage = () => {
               <span>Now Launching Premium Subscriptions</span>
             </div>
             
-            <h2 className="section-title">Choose Your Plan</h2>
+            <h2 className="section-title">Choose Your <AuroraText>Premium</AuroraText> Plan</h2>
             <p className="section-subtitle">
-              Get unlimited access to premium features, priority visibility,<br/>
-              and AI-powered career guidance. Simple pricing, transparent value.
+              <strong style={{ color: '#7A2187' }}>94% never reach their potential</strong> because they lack the right tools.
             </p>
             
             {/* Billing Toggle */}
@@ -579,11 +582,13 @@ const PricingPage = () => {
                     key={cycle}
                     onClick={() => handleCycleChange(cycle)}
                     style={{
-                      padding: '0.75rem 1.5rem',
+                      padding: '0.5rem 1rem',
                       border: 'none',
                       background: 'transparent',
                       borderRadius: '8px',
                       fontWeight: '600',
+                      fontSize: '0.9rem',
+                      margin: '0 0.125rem',
                       color: selectedCycle === cycle ? '#FFFFFF' : '#80868B',
                       cursor: 'pointer',
                       transition: 'all 0.3s ease',
@@ -641,13 +646,30 @@ const PricingPage = () => {
                   <i className="fas fa-exclamation-triangle feature-icon" style={{ color: '#FFC107' }}></i>
                   <span>5 sandbox instances</span>
                 </div>
-                <div className="feature-item limited">
-                  <i className="fas fa-lock feature-icon"></i>
+                <div className="feature-item">
+                  <i className="fas fa-exclamation-triangle feature-icon" style={{ color: '#FFC107' }}></i>
                   <span>Limited course access (20%)</span>
+                </div>
+                <div className="feature-item">
+                  <i className="fas fa-ban feature-icon" style={{ color: '#DC3545' }}></i>
+                  <span>No NCET Plus program access</span>
+                </div>
+                <div className="feature-item">
+                  <i className="fas fa-ban feature-icon" style={{ color: '#DC3545' }}></i>
+                  <span>No certificates</span>
                 </div>
               </div>
               
-              <button className="cta-button secondary">Current Plan</button>
+              <button 
+                className="cta-button secondary"
+                style={{ 
+                  padding: '0.6rem 1.25rem',
+                  fontSize: '0.95rem',
+                  height: 'auto'
+                }}
+              >
+                Current Plan
+              </button>
             </div>
 
             {/* Premium Card */}
@@ -693,15 +715,17 @@ const PricingPage = () => {
                 </div>
               </div>
               
-              <ShimmerButton 
+              <RainbowButton 
                 className="w-full text-lg font-semibold"
-                shimmerColor="#ffffff"
-                shimmerDuration="2s"
-                background="#7A2187"
-                style={{ padding: '1rem 2rem', borderRadius: '12px' }}
+                style={{ 
+                  padding: '1rem 2rem', 
+                  borderRadius: '12px',
+                  background: '#7A2187',
+                  color: 'white'
+                }}
               >
                 Start Your Journey
-              </ShimmerButton>
+              </RainbowButton>
               <div className="trial-note" style={{ textAlign: 'center' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
                   <i className="fas fa-shield-alt" style={{ color: '#28A745', fontSize: '0.875rem' }}></i>
@@ -1131,6 +1155,90 @@ const PricingPage = () => {
         </div>
       </section>
 
+      {/* Transition to Transformation */}
+      <section style={{
+        background: 'linear-gradient(135deg, #fafbfc 0%, #ffffff 100%)',
+        padding: '2rem 0',
+        position: 'relative',
+        overflow: 'hidden',
+        borderTop: '1px solid #f1f3f4',
+        borderBottom: '1px solid #f1f3f4'
+      }}>
+        {/* MagicUI Grid Pattern */}
+        <GridPattern
+          width={80}
+          height={80}
+          x={-1}
+          y={-1}
+          className="text-gray-200"
+          style={{
+            opacity: 0.4,
+            zIndex: 1,
+            maskImage: 'radial-gradient(600px circle at center, white, transparent)',
+            WebkitMaskImage: 'radial-gradient(600px circle at center, white, transparent)'
+          }}
+        />
+        
+        <div className="container">
+          <div style={{
+            textAlign: 'center',
+            maxWidth: '700px',
+            margin: '0 auto',
+            position: 'relative',
+            zIndex: 3
+          }}>
+            <h2 style={{
+              fontSize: '2.25rem',
+              fontWeight: '700',
+              color: '#202124',
+              marginBottom: '0.75rem',
+              lineHeight: '1.2'
+            }}>
+              Stop Reading. Start Transforming.
+            </h2>
+            
+            <p style={{
+              fontSize: '1.125rem',
+              color: '#5F6368',
+              lineHeight: '1.6',
+              margin: '0 0 1.5rem 0'
+            }}>
+              See the exact difference Premium makes in <strong style={{ color: '#7A2187' }}>real careers</strong>, <strong style={{ color: '#7A2187' }}>real numbers</strong>, <strong style={{ color: '#7A2187' }}>real results</strong>.
+            </p>
+            
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '1rem'
+            }}>
+              <RainbowButton>
+                Get Premium Now
+              </RainbowButton>
+              
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '2rem',
+                fontSize: '0.875rem',
+                color: '#5F6368',
+                flexWrap: 'wrap',
+                justifyContent: 'center'
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <i className="fas fa-shield-alt" style={{ color: '#FFD700' }} />
+                  <span>7-day guarantee</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <i className="fas fa-piggy-bank" style={{ color: '#28A745' }} />
+                  <span><strong>₹9,000</strong> savings</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Career Transformation Section */}
       <section style={{
         background: '#ffffff',
@@ -1333,6 +1441,39 @@ const PricingPage = () => {
         </div>
       </section>
 
+      {/* Social Proof Bridge */}
+      <section style={{
+        background: 'white',
+        padding: '2.5rem 0',
+        borderTop: '1px solid #e8eaed',
+        borderBottom: '1px solid #e8eaed'
+      }}>
+        <div className="container">
+          <div style={{
+            textAlign: 'center',
+            maxWidth: '650px',
+            margin: '0 auto'
+          }}>
+            <p style={{
+              fontSize: '1rem',
+              color: '#5F6368',
+              marginBottom: '0.5rem'
+            }}>
+              Don't just take our word for it.
+            </p>
+            <h3 style={{
+              fontSize: '1.5rem',
+              fontWeight: '600',
+              color: '#202124',
+              lineHeight: '1.3',
+              margin: 0
+            }}>
+              Here's what happens when talented professionals like you choose Premium
+            </h3>
+          </div>
+        </div>
+      </section>
+
       {/* Testimonials Section */}
       <section style={{
         background: '#f8f9fa',
@@ -1497,6 +1638,59 @@ const PricingPage = () => {
         </div>
       </section>
 
+      {/* Objection Handling Bridge */}
+      <section style={{
+        background: 'linear-gradient(135deg, #fafbfc 0%, #ffffff 100%)',
+        padding: '2rem 0',
+        position: 'relative',
+        overflow: 'hidden',
+        borderTop: '1px solid #f1f3f4',
+        borderBottom: '1px solid #f1f3f4'
+      }}>
+        <GridPattern
+          width={80}
+          height={80}
+          x={-1}
+          y={-1}
+          className="text-gray-200"
+          style={{
+            opacity: 0.4,
+            zIndex: 1,
+            maskImage: 'radial-gradient(600px circle at center, white, transparent)',
+            WebkitMaskImage: 'radial-gradient(600px circle at center, white, transparent)'
+          }}
+        />
+        
+        <div className="container">
+          <div style={{
+            textAlign: 'center',
+            maxWidth: '700px',
+            margin: '0 auto',
+            position: 'relative',
+            zIndex: 3
+          }}>
+            <h2 style={{
+              fontSize: '2.25rem',
+              fontWeight: '700',
+              color: '#202124',
+              marginBottom: '0.75rem',
+              lineHeight: '1.2'
+            }}>
+              <span style={{ color: '#7A2187' }}>Still Have Questions?</span>
+            </h2>
+            
+            <p style={{
+              fontSize: '1.125rem',
+              color: '#5F6368',
+              lineHeight: '1.6',
+              margin: 0
+            }}>
+              We've got answers to help you make the right decision about <strong style={{ color: '#7A2187' }}>Premium</strong>.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ Section */}
       <section style={{
         background: 'white',
@@ -1581,6 +1775,106 @@ const PricingPage = () => {
             }}>
               Our team is here to help • support@match.com • Available 24/7
             </p>
+          </div>
+          
+          {/* Final Conversion CTA */}
+          <div style={{ marginTop: '4rem' }}>
+            <div style={{ 
+              background: 'linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)',
+              padding: '4rem 2rem',
+              borderRadius: '20px',
+              position: 'relative',
+              overflow: 'hidden'
+            }}>
+              {/* Interactive Grid Pattern */}
+              <InteractiveGridPattern
+                width={40}
+                height={40}
+                squares={[20, 12]}
+                className="opacity-10"
+                squaresClassName="hover:fill-white/20 hover:stroke-white/30 transition-all duration-200"
+                style={{
+                  zIndex: 1
+                }}
+              />
+              
+              <div style={{
+                position: 'relative',
+                zIndex: 2,
+                textAlign: 'center',
+                maxWidth: '800px',
+                margin: '0 auto'
+              }}>
+                <AuroraText 
+                  className="text-4xl font-bold mb-6"
+                  colors={["#7A2187", "#9B4AA3", "#5A1865", "#7A2187"]}
+                  speed={2}
+                  style={{
+                    fontSize: '2.25rem',
+                    fontWeight: '700',
+                    marginBottom: '1.5rem',
+                    display: 'block'
+                  }}
+                >
+                  Your Career Can't Wait Any Longer
+                </AuroraText>
+                
+                <p style={{
+                  fontSize: '1.25rem',
+                  color: '#5F6368',
+                  lineHeight: '1.6',
+                  marginBottom: '1rem'
+                }}>
+                  While you're thinking about it, your competition is already getting ahead with Premium.
+                </p>
+                
+                <p style={{
+                  fontSize: '1.125rem',
+                  color: '#202124',
+                  fontWeight: '600',
+                  marginBottom: '2.5rem'
+                }}>
+                  Don't let another opportunity slip by.
+                </p>
+                
+                <div style={{ marginBottom: '2rem' }}>
+                  <RainbowButton 
+                    style={{ 
+                      fontSize: '1.2rem',
+                      padding: '1.25rem 3rem',
+                      fontWeight: '600'
+                    }}
+                  >
+                    Claim Your Premium Access
+                  </RainbowButton>
+                </div>
+                
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '2rem',
+                  fontSize: '0.9rem',
+                  color: '#5F6368',
+                  flexWrap: 'wrap',
+                  justifyContent: 'center'
+                }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <div style={{
+                      width: '6px',
+                      height: '6px',
+                      borderRadius: '50%',
+                      background: '#28A745',
+                      animation: 'pulse 2s infinite'
+                    }} />
+                    <span><NumberTicker value={847} /> users upgraded this week</span>
+                  </div>
+                  <span>•</span>
+                  <span><strong>₹9,000</strong> savings</span>
+                  <span>•</span>
+                  <span><strong>7-day</strong> guarantee</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

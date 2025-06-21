@@ -25,7 +25,7 @@ export function ShineBorder({
       <div className="relative bg-white rounded-2xl overflow-hidden h-full">
         {children}
       </div>
-      <style jsx>{`
+      <style>{`
         @keyframes subtleShine {
           0%, 100% { 
             background-position: 0% 50%;

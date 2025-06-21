@@ -53,9 +53,9 @@
 .premium-glow {
   position: relative;
   border: 2px solid var(--primary) !important;
-  background: linear-gradient(135deg, rgba(122, 33, 135, 0.02) 0%, var(--white) 100%) !important;
-  transform: scale(1.05);
-  box-shadow: 0 12px 48px rgba(122, 33, 135, 0.15) !important;
+  background: linear-gradient(135deg, rgba(122, 33, 135, 0.03) 0%, var(--white) 100%) !important;
+  transform: scale(1.08);
+  box-shadow: 0 20px 60px rgba(122, 33, 135, 0.2) !important;
 }
 
 .premium-glow::before {
@@ -72,8 +72,8 @@
 }
 
 .premium-glow:hover {
-  transform: scale(1.05) translateY(-4px) !important;
-  box-shadow: 0 12px 40px rgba(122, 33, 135, 0.2) !important;
+  transform: scale(1.08) translateY(-6px) !important;
+  box-shadow: 0 24px 64px rgba(122, 33, 135, 0.25) !important;
 }
 
 /* Plan cards */
@@ -81,17 +81,17 @@
   background: var(--white);
   border-radius: 20px;
   padding: 1.5rem 2rem;
-  box-shadow: 0 6px 32px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12);
   transition: all 0.3s ease;
   position: relative;
-  border: 2px solid var(--gray-200);
+  border: 2px solid var(--gray-300);
   width: 380px;
   flex-shrink: 0;
 }
 
 .plan-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 64px rgba(0, 0, 0, 0.16);
 }
 
 /* Feature cards */
