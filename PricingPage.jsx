@@ -768,6 +768,37 @@ const PricingPage = () => {
               </div>
             </div>
           </div>
+          
+          {/* Pricing Contact Support */}
+          <div style={{ 
+            textAlign: 'center', 
+            marginTop: '2.5rem',
+            marginBottom: '-3rem',
+            position: 'relative',
+            zIndex: 10
+          }}>
+            <p style={{ 
+              fontSize: '0.95rem', 
+              color: '#5F6368',
+              margin: 0
+            }}>
+              Questions about pricing? 
+              <a 
+                href="mailto:support@matchplatform.com" 
+                style={{ 
+                  color: '#7A2187', 
+                  textDecoration: 'none', 
+                  marginLeft: '0.5rem',
+                  fontWeight: '600',
+                  transition: 'color 0.2s ease'
+                }}
+                onMouseEnter={(e) => e.target.style.color = '#9B4AA3'}
+                onMouseLeave={(e) => e.target.style.color = '#7A2187'}
+              >
+                Contact our team →
+              </a>
+            </p>
+          </div>
         </div>
       </section>
 
@@ -1930,9 +1961,46 @@ const PricingPage = () => {
                 <div style={{
                   textAlign: 'center',
                   fontSize: '0.9rem',
-                  color: 'rgba(255, 255, 255, 0.8)'
+                  color: 'rgba(255, 255, 255, 0.8)',
+                  marginBottom: '1.5rem'
                 }}>
                   <span><strong style={{ color: 'white' }}>7-day money back guarantee</strong></span>
+                </div>
+                
+                {/* CTA Contact Support */}
+                <div style={{
+                  textAlign: 'center',
+                  borderTop: '1px solid rgba(255, 255, 255, 0.2)',
+                  paddingTop: '1.5rem'
+                }}>
+                  <p style={{ 
+                    fontSize: '0.9rem', 
+                    color: 'rgba(255, 255, 255, 0.8)',
+                    margin: 0
+                  }}>
+                    Need help choosing the right plan? 
+                    <a 
+                      href="mailto:support@matchplatform.com" 
+                      style={{ 
+                        color: 'white', 
+                        textDecoration: 'none', 
+                        marginLeft: '0.5rem',
+                        fontWeight: '600',
+                        borderBottom: '1px solid rgba(255, 255, 255, 0.5)',
+                        transition: 'all 0.2s ease'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.target.style.borderBottomColor = 'white';
+                        e.target.style.color = '#f8f9fa';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.target.style.borderBottomColor = 'rgba(255, 255, 255, 0.5)';
+                        e.target.style.color = 'white';
+                      }}
+                    >
+                      Talk to our experts
+                    </a>
+                  </p>
                 </div>
                 
               </div>
