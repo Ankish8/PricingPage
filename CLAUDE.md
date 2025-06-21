@@ -19,6 +19,37 @@ MATCH is a career development platform with a freemium-to-premium conversion str
 
 ## Feature Access Matrix
 
+### Detailed Feature Comparison with Strategic Rationale
+
+| Category | Feature | Freemium | Premium | Strategic Rationale |
+|----------|---------|----------|---------|-------------------|
+| **Career Gateway** |
+| | Profile Building | Basic Profile Creation | Enhanced + Video Resume (For all Job roles added in career aspirants) + AI Optimization | The basic offering serves as an entry point, while Premium significantly enhances career impact through advanced features like video resumes and AI optimization. |
+| | Hackathons | Full Access | Full Access | Designed for maximum user engagement and data collection, ensuring both tiers can participate in these valuable events. |
+| | Corporate Visibility (Premium Candidate Pool) | Not Available | Full Access (Aligned with Leaderboard) | The outcome of career advancement creates aspiration and urgency, as Premium users gain enhanced visibility to potential employers. |
+| | Career Opportunities | 1 Opportunity Per Category | Unlimited + Priority Job Matching | Generates immediate conversion pressure by restricting free job search options, highlighting the value of unlimited and prioritized access in Premium. |
+| | Expert Career Counseling | Not Available | Weekly - 1 Free Call | Significantly increases retention and perceived value by offering personalized guidance and support to Premium members. |
+| **Assessments** |
+| | NCET Test Attempts | 1 Attempt Per Year | 5 Attempts + Score Analytics | Designed to leverage performance improvement psychology, encouraging upgrades for users seeking more practice and deeper insights. |
+| | Career Assessments | 2 Free Tests Only | Unlimited Tests + Advanced Analytics | Creates upgrade urgency by limiting free access, prompting users to convert for comprehensive career exploration and advanced insights. |
+| **Upskill Hub** |
+| | NCET Plus Programs | Not Available | 1 Program + Live Training Access + 1 Video Recorded Sessions | A high-value, exclusive offering that justifies the investment in the Premium tier through specialized programs and direct expert interaction. |
+| | Career Recommendations | Basic Insights Only (20%) | Full AI-Powered Career Roadmap | Creates a strong emotional trigger for upgrades by providing limited insights in the free tier and a comprehensive, AI-driven career roadmap in Premium. |
+| | Courses & Certification | 20% Course Access of 5 Courses - No Certificate | 100% Access + Certificate | Implements strategic friction during the learning journey, motivating upgrades for full course access and official certification. |
+| **Code Playground and Practice** |
+| | Sandbox Pro Accessibility | 5 Sandbox Instances | Unlimited | Provides limited exposure in the free tier, with unlimited access in Premium to showcase the full power of our AI-driven learning environment. |
+| | Capstone Projects & AI Support | 1 Capstone Project - No AI Support | 3 Capstone Projects - With AI Support | This differentiation is designed to upscale the practical learning experience and demonstrate the progressive value of our offerings. |
+| | Live Mentor Project Support | Not Available | Available - Weekly 1 Free Call Available (Similar to Expert Career Counselling) | This feature serves as a critical differentiator and a high-value incentive for the Premium tier. While Freemium users can engage with projects independently, Premium users gain access to personalized, expert human guidance. |
+| **Add Ons** |
+| | Reward System | Rewards capped at 50% of maximum achievable points | Rewards Uncapped | Differentiates the user experience by offering enhanced incentives and recognition to Premium subscribers. Candidates can further use these reward points to redeem other items within the platform. |
+| | Money Back Guarantee | - | 7-Day Money Back Guarantee | An extended trial period that instils confidence and aims to increase conversion rates after users experience the full Premium benefits. |
+| **Gamified Learning and Additional Programs** |
+| | Leaderboard | No Preferential Highlighting | Highlighted as Premium Candidate | Showcases the value of Premium status by visually distinguishing subscribers on the leaderboard. |
+| | TalentX | Not Available | Full Access | Provides exclusive access to a high-value platform for Premium users. |
+| | WAVE Scholarship Program | Not Available | Exclusive Access + ₹25,000 Scholarship Chance | A high-value, exclusive incentive for Premium users, with eligibility criteria ensuring only top candidates can apply, driving aspirational upgrades. |
+
+### Legacy Feature Matrix (Quick Reference)
+
 ### Career Gateway
 | Feature | Freemium | Premium |
 |---------|----------|---------|

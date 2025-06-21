@@ -209,3 +209,18 @@
   height: calc(100% - 1rem);
   z-index: 1;
 }
+
+/* Container class */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Responsive design for transformation grid */
+@media (max-width: 768px) {
+  .transformation-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+}
