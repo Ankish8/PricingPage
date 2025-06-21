@@ -635,27 +635,27 @@ const PricingPage = () => {
               
               <div className="features-list">
                 <div className="feature-item">
-                  <i className="fas fa-exclamation-triangle feature-icon" style={{ color: '#FFC107' }}></i>
+                  <i className="fas fa-lock feature-icon" style={{ color: '#9AA0A6' }}></i>
                   <span>1 job application per category</span>
                 </div>
                 <div className="feature-item">
-                  <i className="fas fa-exclamation-triangle feature-icon" style={{ color: '#FFC107' }}></i>
+                  <i className="fas fa-lock feature-icon" style={{ color: '#9AA0A6' }}></i>
                   <span>1 NCET test attempt/year</span>
                 </div>
                 <div className="feature-item">
-                  <i className="fas fa-exclamation-triangle feature-icon" style={{ color: '#FFC107' }}></i>
+                  <i className="fas fa-lock feature-icon" style={{ color: '#9AA0A6' }}></i>
                   <span>5 sandbox instances</span>
                 </div>
                 <div className="feature-item">
-                  <i className="fas fa-exclamation-triangle feature-icon" style={{ color: '#FFC107' }}></i>
+                  <i className="fas fa-lock feature-icon" style={{ color: '#9AA0A6' }}></i>
                   <span>Limited course access (20%)</span>
                 </div>
                 <div className="feature-item">
-                  <i className="fas fa-ban feature-icon" style={{ color: '#DC3545' }}></i>
+                  <i className="fas fa-minus-circle feature-icon" style={{ color: '#9AA0A6' }}></i>
                   <span>No NCET Plus program access</span>
                 </div>
                 <div className="feature-item">
-                  <i className="fas fa-ban feature-icon" style={{ color: '#DC3545' }}></i>
+                  <i className="fas fa-minus-circle feature-icon" style={{ color: '#9AA0A6' }}></i>
                   <span>No certificates</span>
                 </div>
               </div>
@@ -694,23 +694,23 @@ const PricingPage = () => {
               
               <div className="features-list">
                 <div className="feature-item">
-                  <i className="fas fa-infinity feature-icon" style={{ color: '#7A2187' }}></i>
+                  <i className="fas fa-door-open feature-icon" style={{ color: '#7A2187' }}></i>
                   <span><strong>Unlimited</strong> job applications</span>
                 </div>
                 <div className="feature-item">
-                  <i className="fas fa-crown feature-icon" style={{ color: '#7A2187' }}></i>
+                  <i className="fas fa-star feature-icon" style={{ color: '#7A2187' }}></i>
                   <span><strong>Premium badge</strong> & corporate visibility</span>
                 </div>
                 <div className="feature-item">
-                  <i className="fas fa-graduation-cap feature-icon" style={{ color: '#7A2187' }}></i>
+                  <i className="fas fa-award feature-icon" style={{ color: '#7A2187' }}></i>
                   <span><strong>Full course access</strong> + certificates</span>
                 </div>
                 <div className="feature-item">
-                  <i className="fas fa-rocket feature-icon" style={{ color: '#7A2187' }}></i>
+                  <i className="fas fa-gem feature-icon" style={{ color: '#7A2187' }}></i>
                   <span><strong>NCET Plus program</strong> access</span>
                 </div>
                 <div className="feature-item">
-                  <i className="fas fa-user-tie feature-icon" style={{ color: '#7A2187' }}></i>
+                  <i className="fas fa-video feature-icon" style={{ color: '#7A2187' }}></i>
                   <span><strong>Live mentor support</strong></span>
                 </div>
               </div>
@@ -833,42 +833,43 @@ const PricingPage = () => {
                   gap: '0.75rem',
                   margin: 0
                 }}>
-                  <i className="fas fa-rocket" style={{ color: '#7A2187', fontSize: '1.125rem' }}></i>
+                  <i className="fas fa-bullseye" style={{ color: '#7A2187', fontSize: '1.125rem' }}></i>
                   Core Career Benefits
                 </h3>
               </div>
               
               <FeatureRow 
-                icon="briefcase"
+                icon="door-open"
                 title="Job Applications"
                 description="Apply to career opportunities across all categories"
-                freemiumIcon="exclamation-triangle"
+                freemiumIcon="lock"
                 freemiumText="1 per category"
+                freemiumColor="#9AA0A6"
                 premiumIcon="infinity"
                 premiumText="Unlimited + Priority Matching"
                 strategicRationale="Miss 94% of job matches. Premium users get 12x more relevant opportunities."
               />
 
               <FeatureRow 
-                icon="users"
+                icon="eye"
                 title="Corporate Visibility"
                 description="Enhanced visibility to potential employers"
-                freemiumIcon="ban"
+                freemiumIcon="eye-slash"
                 freemiumText="Not Available"
-                freemiumColor="#DC3545"
+                freemiumColor="#9AA0A6"
                 premiumIcon="star"
                 premiumText="Premium Badge + Recruiter Pool"
                 strategicRationale="Invisible to premium recruiters. 85% of top jobs go to premium pool candidates only."
               />
 
               <FeatureRow 
-                icon="user-tie"
+                icon="user-graduate"
                 title="Expert Career Counseling"
                 description="Personalized guidance from industry professionals"
-                freemiumIcon="ban"
+                freemiumIcon="minus-circle"
                 freemiumText="Not Available"
-                freemiumColor="#DC3545"
-                premiumIcon="phone"
+                freemiumColor="#9AA0A6"
+                premiumIcon="video"
                 premiumText="Weekly 1-on-1 Calls"
                 strategicRationale="No expert guidance = 67% longer career transition time. Premium users land jobs 3x faster."
               />
@@ -894,28 +895,30 @@ const PricingPage = () => {
                   gap: '0.75rem',
                   margin: 0
                 }}>
-                  <i className="fas fa-graduation-cap" style={{ color: '#7A2187', fontSize: '1.125rem' }}></i>
+                  <i className="fas fa-brain" style={{ color: '#7A2187', fontSize: '1.125rem' }}></i>
                   Learning & Development
                 </h3>
               </div>
               
               <FeatureRow 
-                icon="book-open"
+                icon="award"
                 title="Courses & Certification"
                 description="Access to skill development courses and certificates"
-                freemiumIcon="exclamation-triangle"
+                freemiumIcon="lock"
                 freemiumText="20% Access, No Certificates"
+                freemiumColor="#9AA0A6"
                 premiumIcon="certificate"
                 premiumText="Full Access + Certificates"
                 strategicRationale="No certificate = no credential value. Employers reject 91% of uncertified skill claims."
               />
 
               <FeatureRow 
-                icon="route"
+                icon="map-marked-alt"
                 title="AI Career Roadmap"
                 description="Personalized AI-powered career guidance"
-                freemiumIcon="exclamation-triangle"
+                freemiumIcon="lock"
                 freemiumText="Basic Insights (20%)"
+                freemiumColor="#9AA0A6"
                 premiumIcon="brain"
                 premiumText="Complete AI Roadmap"
                 strategicRationale="80% of your roadmap hidden = career detours. Complete roadmap users reach goals 4x faster."
@@ -927,7 +930,7 @@ const PricingPage = () => {
                 description="Expert guidance for project development"
                 freemiumIcon="ban"
                 freemiumText="Not Available"
-                freemiumColor="#DC3545"
+                freemiumColor="#9AA0A6"
                 premiumIcon="video"
                 premiumText="Weekly Video Calls"
                 strategicRationale="No mentor = project failure risk. 82% of successful projects had mentor guidance."
@@ -954,7 +957,7 @@ const PricingPage = () => {
                   gap: '0.75rem',
                   margin: 0
                 }}>
-                  <i className="fas fa-code" style={{ color: '#7A2187', fontSize: '1.125rem' }}></i>
+                  <i className="fas fa-clipboard-check" style={{ color: '#7A2187', fontSize: '1.125rem' }}></i>
                   Skill Assessment & Practice
                 </h3>
               </div>
@@ -1024,7 +1027,7 @@ const PricingPage = () => {
                   gap: '0.75rem',
                   margin: 0
                 }}>
-                  <i className="fas fa-star" style={{ color: '#7A2187', fontSize: '1.125rem' }}></i>
+                  <i className="fas fa-crown" style={{ color: '#7A2187', fontSize: '1.125rem' }}></i>
                   Exclusive Programs & Benefits
                 </h3>
               </div>
@@ -1035,7 +1038,7 @@ const PricingPage = () => {
                 description="Advanced career enhancement programs"
                 freemiumIcon="ban"
                 freemiumText="Not Available"
-                freemiumColor="#DC3545"
+                freemiumColor="#9AA0A6"
                 premiumIcon="video"
                 premiumText="Full Program + Live Training"
                 strategicRationale="Miss live training = miss networking. 78% of premium program graduates get job offers."
@@ -1047,7 +1050,7 @@ const PricingPage = () => {
                 description="Access to exclusive talent marketplace"
                 freemiumIcon="ban"
                 freemiumText="Not Available"
-                freemiumColor="#DC3545"
+                freemiumColor="#9AA0A6"
                 premiumIcon="unlock"
                 premiumText="Full Access"
                 strategicRationale="Locked out of exclusive opportunities. TalentX has 93% premium-only job postings."
@@ -1059,7 +1062,7 @@ const PricingPage = () => {
                 description="Exclusive scholarship opportunities for top performers"
                 freemiumIcon="ban"
                 freemiumText="Not Available"
-                freemiumColor="#DC3545"
+                freemiumColor="#9AA0A6"
                 premiumIcon="money-bill-wave"
                 premiumText="₹25,000 Scholarship Chance"
                 premiumColor="#28A745"
@@ -1087,7 +1090,7 @@ const PricingPage = () => {
                   gap: '0.75rem',
                   margin: 0
                 }}>
-                  <i className="fas fa-cog" style={{ color: '#7A2187', fontSize: '1.125rem' }}></i>
+                  <i className="fas fa-layer-group" style={{ color: '#7A2187', fontSize: '1.125rem' }}></i>
                   Platform Features & Engagement
                 </h3>
               </div>
@@ -1750,32 +1753,6 @@ const PricingPage = () => {
               answer: "Premium members get priority support through multiple channels. You'll have access to weekly video/audio calls with industry mentors, priority customer support, and exclusive Premium member resources to ensure you get maximum value from your subscription."
             }
           ]} />
-          
-          {/* Subtle CTA */}
-          <div style={{
-            textAlign: 'center',
-            marginTop: '3rem',
-            padding: '2rem',
-            background: 'linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)',
-            borderRadius: '16px',
-            border: '1px solid #e8eaed'
-          }}>
-            <p style={{
-              fontSize: '1rem',
-              color: '#5F6368',
-              margin: '0 0 1rem 0'
-            }}>
-              Still have questions?
-            </p>
-            <p style={{
-              fontSize: '0.875rem',
-              color: '#7A2187',
-              margin: 0,
-              fontWeight: '500'
-            }}>
-              Our team is here to help • support@match.com • Available 24/7
-            </p>
-          </div>
           
           {/* Final Conversion CTA */}
           <div style={{ marginTop: '4rem' }}>
