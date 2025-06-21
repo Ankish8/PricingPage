@@ -529,7 +529,7 @@ const PricingPage = () => {
           padding: '3rem 0 8rem 0',
           textAlign: 'center',
           position: 'relative',
-          overflow: 'visible'
+          overflow: 'hidden'
         }}
       >
         {/* Gradient Blobs */}
@@ -897,39 +897,6 @@ const PricingPage = () => {
         padding: '0 0 0 0',
         position: 'relative'
       }}>
-        {/* Gradient Blobs - Original Intensity */}
-        <div 
-          style={{
-            position: 'absolute',
-            top: '30%',
-            left: '-450px',
-            transform: 'translateY(-50%)',
-            width: '600px',
-            height: '600px',
-            borderRadius: '600px',
-            background: 'linear-gradient(180deg, rgba(242, 47, 176, 0.2) 0%, rgba(245, 138, 37, 0.00) 100%, rgba(112, 97, 163, 0.25) 100%)',
-            filter: 'blur(50px)',
-            zIndex: 0,
-            pointerEvents: 'none',
-            opacity: 1
-          }}
-        />
-        <div 
-          style={{
-            position: 'absolute',
-            top: '70%',
-            right: '-450px',
-            transform: 'translateY(-50%)',
-            width: '600px',
-            height: '600px',
-            borderRadius: '600px',
-            background: 'linear-gradient(180deg, rgba(33, 135, 167, 0.15) 0%, rgba(122, 33, 135, 0.1) 60%, rgba(247, 179, 43, 0.00) 100%)',
-            filter: 'blur(50px)',
-            zIndex: 0,
-            pointerEvents: 'none',
-            opacity: 1
-          }}
-        />
         
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           {/* Feature Categories */}
