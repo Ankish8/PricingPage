@@ -669,28 +669,28 @@ const PricingPage = () => {
               </div>
               
               <div className="features-list">
-                <div className="feature-item">
-                  <i className="fas fa-lock feature-icon" style={{ color: '#9AA0A6' }}></i>
+                <div className="feature-item limited">
+                  <i className="fas fa-exclamation-triangle feature-icon" style={{ color: '#FFC107' }}></i>
                   <span>1 job application per category</span>
                 </div>
-                <div className="feature-item">
-                  <i className="fas fa-lock feature-icon" style={{ color: '#9AA0A6' }}></i>
+                <div className="feature-item limited">
+                  <i className="fas fa-exclamation-triangle feature-icon" style={{ color: '#FFC107' }}></i>
                   <span>1 NCET test attempt/year</span>
                 </div>
-                <div className="feature-item">
-                  <i className="fas fa-lock feature-icon" style={{ color: '#9AA0A6' }}></i>
+                <div className="feature-item limited">
+                  <i className="fas fa-exclamation-triangle feature-icon" style={{ color: '#FFC107' }}></i>
                   <span>5 sandbox instances</span>
                 </div>
-                <div className="feature-item">
-                  <i className="fas fa-lock feature-icon" style={{ color: '#9AA0A6' }}></i>
+                <div className="feature-item limited">
+                  <i className="fas fa-exclamation-triangle feature-icon" style={{ color: '#FFC107' }}></i>
                   <span>Limited course access (20%)</span>
                 </div>
-                <div className="feature-item">
-                  <i className="fas fa-minus-circle feature-icon" style={{ color: '#9AA0A6' }}></i>
+                <div className="feature-item limited">
+                  <i className="fas fa-ban feature-icon" style={{ color: '#DC3545' }}></i>
                   <span>No NCET Plus program access</span>
                 </div>
-                <div className="feature-item">
-                  <i className="fas fa-minus-circle feature-icon" style={{ color: '#9AA0A6' }}></i>
+                <div className="feature-item limited">
+                  <i className="fas fa-ban feature-icon" style={{ color: '#DC3545' }}></i>
                   <span>No certificates</span>
                 </div>
               </div>
@@ -729,7 +729,7 @@ const PricingPage = () => {
               
               <div className="features-list">
                 <div className="feature-item">
-                  <i className="fas fa-door-open feature-icon" style={{ color: '#7A2187' }}></i>
+                  <i className="fas fa-infinity feature-icon" style={{ color: '#7A2187' }}></i>
                   <span><strong style={{ fontWeight: '700' }}>Unlimited</strong> job applications</span>
                 </div>
                 <div className="feature-item">
@@ -737,7 +737,7 @@ const PricingPage = () => {
                   <span><strong style={{ fontWeight: '700' }}>Premium badge</strong> & corporate visibility</span>
                 </div>
                 <div className="feature-item">
-                  <i className="fas fa-award feature-icon" style={{ color: '#7A2187' }}></i>
+                  <i className="fas fa-graduation-cap feature-icon" style={{ color: '#7A2187' }}></i>
                   <span><strong style={{ fontWeight: '700' }}>Full course access</strong> + certificates</span>
                 </div>
                 <div className="feature-item">
@@ -745,7 +745,7 @@ const PricingPage = () => {
                   <span><strong style={{ fontWeight: '700' }}>NCET Plus program</strong> access</span>
                 </div>
                 <div className="feature-item">
-                  <i className="fas fa-video feature-icon" style={{ color: '#7A2187' }}></i>
+                  <i className="fas fa-user feature-icon" style={{ color: '#7A2187' }}></i>
                   <span><strong style={{ fontWeight: '700' }}>Live mentor support</strong></span>
                 </div>
               </div>
