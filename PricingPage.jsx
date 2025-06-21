@@ -1,4 +1,46 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { ShimmerButton } from './src/components/magicui/shimmer-button';
+
+// Feature Row Component
+const FeatureRow = ({ icon, title, description, freemiumIcon, freemiumText, premiumIcon, premiumText, freemiumColor = '#FFC107', premiumColor = '#7A2187' }) => (
+  <div style={{
+    display: 'grid',
+    gridTemplateColumns: '2fr 1fr 1fr',
+    gap: '2rem',
+    padding: '1.25rem 1rem',
+    borderBottom: '1px solid #f1f3f4',
+    alignItems: 'center',
+    borderRadius: '8px',
+    transition: 'background-color 0.2s ease'
+  }}
+  onMouseEnter={(e) => e.target.style.backgroundColor = '#fafbfc'}
+  onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
+  >
+    <div>
+      <h4 style={{ fontSize: '1rem', fontWeight: '600', color: '#202124', margin: '0 0 0.375rem 0' }}>
+        <i className={`fas fa-${icon}`} style={{ color: '#7A2187', marginRight: '0.5rem', fontSize: '0.875rem' }}></i>
+        {title}
+      </h4>
+      <p style={{ fontSize: '0.875rem', color: '#5F6368', margin: 0, lineHeight: '1.4' }}>
+        {description}
+      </p>
+    </div>
+    <div style={{ textAlign: 'center' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.375rem' }}>
+        <i className={`fas fa-${freemiumIcon}`} style={{ color: freemiumColor, fontSize: '1.125rem' }}></i>
+        <p style={{ fontSize: '0.875rem', color: '#5F6368', margin: 0 }}>{freemiumText}</p>
+      </div>
+    </div>
+    <div style={{ textAlign: 'center' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.375rem' }}>
+        <i className={`fas fa-${premiumIcon}`} style={{ color: premiumColor, fontSize: '1.125rem' }}></i>
+        <p style={{ fontSize: '0.875rem', color: '#202124', margin: 0, fontWeight: '500' }}>
+          {premiumText}
+        </p>
+      </div>
+    </div>
+  </div>
+);
 
 // Custom hook for animated numbers
 const useAnimatedNumber = (initialValue, duration = 700) => {
@@ -61,6 +103,11 @@ const PricingPage = () => {
       {/* Inject CSS Variables and Styles */}
       <style>
         {`
+          body {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            min-height: 100vh;
+          }
+          
           :root {
             /* Primary Colors */
             --primary: #7A2187;
@@ -514,12 +561,359 @@ const PricingPage = () => {
                 </div>
               </div>
               
-              <button className="cta-button primary">Start Your Journey</button>
+              <ShimmerButton 
+                className="w-full text-lg font-semibold"
+                shimmerColor="#ffffff"
+                shimmerDuration="2s"
+                background="#7A2187"
+                style={{ padding: '1rem 2rem', borderRadius: '12px' }}
+              >
+                Start Your Journey
+              </ShimmerButton>
               <div className="trial-note" style={{ textAlign: 'center' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
                   <i className="fas fa-shield-alt" style={{ color: '#28A745', fontSize: '0.875rem' }}></i>
                   <span>7-day money back guarantee</span>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Feature Comparison Section */}
+      <section style={{ 
+        background: 'linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)',
+        padding: '6rem 0 0 0',
+        position: 'relative' 
+      }}>
+        <div className="container">
+          {/* Section Header */}
+          <div style={{ 
+            textAlign: 'center', 
+            marginBottom: '3rem'
+          }}>
+            <h2 style={{
+              fontSize: '2.5rem',
+              fontWeight: '700',
+              color: '#202124',
+              marginBottom: '1rem'
+            }}>
+              Compare Plans in Detail
+            </h2>
+            <p style={{
+              fontSize: '1.125rem',
+              color: '#5F6368',
+              marginBottom: '3rem'
+            }}>
+              See exactly what you get with Premium across all platform features
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Sticky Table Header */}
+      <div style={{
+        position: 'sticky',
+        top: '0',
+        background: 'linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)',
+        zIndex: 10,
+        padding: '1rem 0',
+        borderBottom: '1px solid #e8eaed'
+      }}>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '2fr 1fr 1fr',
+          gap: '2rem',
+          maxWidth: '1000px',
+          margin: '0 auto',
+          alignItems: 'center',
+          padding: '0 1rem'
+        }}>
+          <div>
+            <h4 style={{ fontSize: '0.875rem', fontWeight: '500', color: '#5F6368', margin: 0, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+              Features
+            </h4>
+          </div>
+          <div style={{ textAlign: 'center' }}>
+            <h4 style={{ fontSize: '0.875rem', fontWeight: '500', color: '#5F6368', margin: 0, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+              Freemium
+            </h4>
+          </div>
+          <div style={{ textAlign: 'center' }}>
+            <h4 style={{ fontSize: '0.875rem', fontWeight: '500', color: '#7A2187', margin: 0, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+              Premium
+            </h4>
+          </div>
+        </div>
+      </div>
+
+      {/* Feature Categories Section */}
+      <section style={{ 
+        background: 'linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)',
+        padding: '0 0 6rem 0'
+      }}>
+        <div className="container">
+          {/* Feature Categories */}
+          <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+            
+            {/* Career Gateway Section */}
+            <div style={{ marginBottom: '4rem' }}>
+              <div style={{
+                position: 'sticky',
+                top: '57px',
+                background: 'linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)',
+                zIndex: 9,
+                padding: '1rem 1rem',
+                borderBottom: '2px solid #7A2187',
+                marginBottom: '1rem'
+              }}>
+                <h3 style={{
+                  fontSize: '1.375rem',
+                  fontWeight: '600',
+                  color: '#202124',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.75rem',
+                  margin: 0
+                }}>
+                  <i className="fas fa-briefcase" style={{ color: '#7A2187', fontSize: '1.125rem' }}></i>
+                  Career Gateway
+                </h3>
+              </div>
+              
+              <FeatureRow 
+                icon="user-circle"
+                title="Profile Building"
+                description="Create and customize your professional profile"
+                freemiumIcon="exclamation-triangle"
+                freemiumText="Basic only"
+                premiumIcon="crown"
+                premiumText="Full access + video resume + AI"
+              />
+
+              <FeatureRow 
+                icon="eye"
+                title="Corporate Visibility"
+                description="Get noticed by recruiters and companies"
+                freemiumIcon="eye-slash"
+                freemiumText="Not visible"
+                freemiumColor="#DC3545"
+                premiumIcon="badge-check"
+                premiumText="Premium badge visible"
+              />
+
+              <FeatureRow 
+                icon="paper-plane"
+                title="Job Applications"
+                description="Apply to jobs across different categories"
+                freemiumIcon="exclamation-triangle"
+                freemiumText="1 per category"
+                premiumIcon="infinity"
+                premiumText="Unlimited + priority"
+              />
+            </div>
+
+            {/* Assessments Section */}
+            <div style={{ marginBottom: '4rem' }}>
+              <div style={{
+                position: 'sticky',
+                top: '57px',
+                background: 'linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)',
+                zIndex: 9,
+                padding: '1rem 1rem',
+                borderBottom: '2px solid #7A2187',
+                marginBottom: '1rem'
+              }}>
+                <h3 style={{
+                  fontSize: '1.375rem',
+                  fontWeight: '600',
+                  color: '#202124',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.75rem',
+                  margin: 0
+                }}>
+                  <i className="fas fa-clipboard-check" style={{ color: '#7A2187', fontSize: '1.125rem' }}></i>
+                  Assessments
+                </h3>
+              </div>
+              
+              <FeatureRow 
+                icon="graduation-cap"
+                title="NCET Test"
+                description="National Career Enhancement Test attempts"
+                freemiumIcon="exclamation-triangle"
+                freemiumText="1 attempt/year"
+                premiumIcon="redo"
+                premiumText="5 attempts"
+              />
+
+              <FeatureRow 
+                icon="chart-line"
+                title="Career Assessment"
+                description="Personality and skill assessment tests"
+                freemiumIcon="exclamation-triangle"
+                freemiumText="2 basic tests"
+                premiumIcon="check-circle"
+                premiumText="Full access to all tests"
+              />
+            </div>
+
+            {/* Upskill Hub Section */}
+            <div style={{ marginBottom: '4rem' }}>
+              <div style={{
+                position: 'sticky',
+                top: '57px',
+                background: 'linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)',
+                zIndex: 9,
+                padding: '1rem 1rem',
+                borderBottom: '2px solid #7A2187',
+                marginBottom: '1rem'
+              }}>
+                <h3 style={{
+                  fontSize: '1.375rem',
+                  fontWeight: '600',
+                  color: '#202124',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.75rem',
+                  margin: 0
+                }}>
+                  <i className="fas fa-rocket" style={{ color: '#7A2187', fontSize: '1.125rem' }}></i>
+                  Upskill Hub
+                </h3>
+              </div>
+              
+              <FeatureRow 
+                icon="plus-circle"
+                title="NCET Plus Program"
+                description="Advanced career enhancement program"
+                freemiumIcon="credit-card"
+                freemiumText="Subscribe separately"
+                premiumIcon="unlock"
+                premiumText="Full access + live sessions"
+              />
+
+              <FeatureRow 
+                icon="route"
+                title="Career Roadmap"
+                description="Personalized career development path"
+                freemiumIcon="exclamation-triangle"
+                freemiumText="20% basic path"
+                premiumIcon="brain"
+                premiumText="Full AI-generated roadmap"
+              />
+
+              <FeatureRow 
+                icon="book-open"
+                title="Courses"
+                description="Access to skill development courses"
+                freemiumIcon="exclamation-triangle"
+                freemiumText="20% preview, no certificates"
+                premiumIcon="certificate"
+                premiumText="Full access + certificates"
+              />
+            </div>
+
+            {/* Code Playground Section */}
+            <div style={{ marginBottom: '4rem' }}>
+              <div style={{
+                position: 'sticky',
+                top: '57px',
+                background: 'linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)',
+                zIndex: 9,
+                padding: '1rem 1rem',
+                borderBottom: '2px solid #7A2187',
+                marginBottom: '1rem'
+              }}>
+                <h3 style={{
+                  fontSize: '1.375rem',
+                  fontWeight: '600',
+                  color: '#202124',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.75rem',
+                  margin: 0
+                }}>
+                  <i className="fas fa-code" style={{ color: '#7A2187', fontSize: '1.125rem' }}></i>
+                  Code Playground
+                </h3>
+              </div>
+              
+              <FeatureRow 
+                icon="play-circle"
+                title="Sandbox Instances"
+                description="Coding environments for practice"
+                freemiumIcon="exclamation-triangle"
+                freemiumText="5 instances"
+                premiumIcon="infinity"
+                premiumText="Unlimited"
+              />
+
+              <FeatureRow 
+                icon="project-diagram"
+                title="Capstone Projects"
+                description="Real-world project development"
+                freemiumIcon="exclamation-triangle"
+                freemiumText="1 project, no AI"
+                premiumIcon="robot"
+                premiumText="3 projects with AI assistance"
+              />
+
+              <FeatureRow 
+                icon="user-tie"
+                title="Mentor Support"
+                description="One-on-one guidance from industry experts"
+                freemiumIcon="ban"
+                freemiumText="Disabled"
+                freemiumColor="#DC3545"
+                premiumIcon="video"
+                premiumText="Weekly video/audio calls"
+              />
+            </div>
+
+            {/* CTA Section */}
+            <div style={{
+              textAlign: 'center',
+              padding: '3rem 2rem',
+              background: 'linear-gradient(135deg, rgba(122, 33, 135, 0.05) 0%, rgba(122, 33, 135, 0.02) 100%)',
+              borderRadius: '20px',
+              marginTop: '3rem'
+            }}>
+              <h3 style={{
+                fontSize: '1.75rem',
+                fontWeight: '600',
+                color: '#202124',
+                marginBottom: '1rem'
+              }}>
+                Ready to unlock your full potential?
+              </h3>
+              <p style={{
+                fontSize: '1.125rem',
+                color: '#5F6368',
+                marginBottom: '2rem'
+              }}>
+                Join thousands of professionals who've accelerated their careers with Premium
+              </p>
+              <ShimmerButton 
+                className="text-lg font-semibold"
+                shimmerColor="#ffffff"
+                shimmerDuration="2s"
+                background="#7A2187"
+                style={{ padding: '1rem 3rem', borderRadius: '12px', fontSize: '1.125rem' }}
+              >
+                Upgrade to Premium Now
+              </ShimmerButton>
+              <div style={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'center', 
+                gap: '0.5rem',
+                marginTop: '1rem'
+              }}>
+                <i className="fas fa-shield-alt" style={{ color: '#28A745', fontSize: '0.875rem' }}></i>
+                <span style={{ fontSize: '0.875rem', color: '#5F6368' }}>7-day money back guarantee</span>
               </div>
             </div>
           </div>
