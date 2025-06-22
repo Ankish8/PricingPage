@@ -908,48 +908,70 @@ const PricingPage = () => {
         </div>
       </section>
 
-      {/* Sticky Table Header */}
-      <div style={{
-        position: 'sticky',
-        top: '0',
-        background: 'linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)',
-        zIndex: 10,
-        padding: '1.5rem 0'
-      }}>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '2fr 1fr 1fr',
-          gap: '2rem',
-          maxWidth: '1000px',
-          margin: '0 auto',
-          alignItems: 'center',
-          padding: '0 1rem',
-          borderBottom: '1px solid #e8eaed'
-        }}>
-          <div>
-            <h4 style={{ fontSize: '0.875rem', fontWeight: '500', color: '#5F6368', margin: 0, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-              Features
-            </h4>
-          </div>
-          <div style={{ textAlign: 'center' }}>
-            <h4 style={{ fontSize: '0.875rem', fontWeight: '500', color: '#5F6368', margin: 0, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-              Freemium
-            </h4>
-          </div>
-          <div style={{ textAlign: 'center' }}>
-            <h4 style={{ fontSize: '0.875rem', fontWeight: '500', color: '#7A2187', margin: 0, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-              Premium
-            </h4>
-          </div>
-        </div>
-      </div>
-
       {/* Feature Categories Section */}
       <section data-comparison-section style={{ 
         background: 'linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)',
         padding: '0 0 0 0',
         position: 'relative'
       }}>
+        
+        {/* Sticky Table Header */}
+        <div style={{
+          position: 'sticky',
+          top: '0',
+          background: 'rgba(248, 249, 250, 0.95)',
+          backdropFilter: 'blur(8px)',
+          zIndex: 10,
+          padding: '1.75rem 0',
+          borderBottom: '1px solid #e8eaed'
+        }}>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: '2fr 1fr 1fr',
+            gap: '2rem',
+            maxWidth: '1000px',
+            margin: '0 auto',
+            alignItems: 'center',
+            padding: '0 1rem'
+          }}>
+            <div>
+              <h4 style={{ 
+                fontSize: '1rem', 
+                fontWeight: '600', 
+                color: '#202124', 
+                margin: 0, 
+                textTransform: 'uppercase', 
+                letterSpacing: '0.5px'
+              }}>
+                Features
+              </h4>
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <h4 style={{ 
+                fontSize: '1rem', 
+                fontWeight: '600', 
+                color: '#5F6368', 
+                margin: 0, 
+                textTransform: 'uppercase', 
+                letterSpacing: '0.5px'
+              }}>
+                Freemium
+              </h4>
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <h4 style={{ 
+                fontSize: '1rem', 
+                fontWeight: '700', 
+                color: '#7A2187', 
+                margin: 0, 
+                textTransform: 'uppercase', 
+                letterSpacing: '0.5px'
+              }}>
+                Premium
+              </h4>
+            </div>
+          </div>
+        </div>
         
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           {/* Feature Categories */}
