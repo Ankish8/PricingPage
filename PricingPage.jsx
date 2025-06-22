@@ -210,13 +210,31 @@ const PricingPage = () => {
   // Use animated number hook for savings
   const [animatedSavings, animateSavings] = useAnimatedNumber(priceData[selectedCycle].savings);
   
+  // Use animated number hook for badge display
+  const getBadgeValue = (cycle) => {
+    if (cycle === 'monthly') return 24000;
+    return priceData[cycle].savings;
+  };
+  
+  const [animatedBadgeNumber, animateBadgeNumber] = useAnimatedNumber(getBadgeValue(selectedCycle));
+  
   // Format the display savings
   const displaySavings = animatedSavings > 0 ? `₹${animatedSavings.toLocaleString('en-IN')} savings` : '';
+  
+  // Format badge display
+  const formatBadgeDisplay = (number, cycle) => {
+    if (cycle === 'monthly') {
+      return `₹${number.toLocaleString('en-IN')} annually`;
+    }
+    return `₹${number.toLocaleString('en-IN')} savings`;
+  };
 
   // Handle cycle change with animation
   const handleCycleChange = (newCycle) => {
     const newSavings = priceData[newCycle].savings;
+    const newBadgeValue = getBadgeValue(newCycle);
     animateSavings(newSavings);
+    animateBadgeNumber(newBadgeValue);
     setSelectedCycle(newCycle);
   };
 
@@ -273,6 +291,11 @@ const PricingPage = () => {
           @keyframes tooltipFadeIn {
             0% { opacity: 0; transform: translateY(10px) scale(0.95); }
             100% { opacity: 1; transform: translateY(0) scale(1); }
+          }
+
+          @keyframes gentle-pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.85; transform: scale(1.02); }
           }
 
           @keyframes ripple {
@@ -406,8 +429,8 @@ const PricingPage = () => {
 
           .card-header {
             text-align: center;
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
             border-bottom: 1px solid var(--gray-200);
           }
 
@@ -614,33 +637,51 @@ const PricingPage = () => {
                   width: 'fit-content'
                 }}
               >
-                {['monthly', 'halfyearly', 'annual'].map((cycle) => (
-                  <button
-                    key={cycle}
-                    onClick={() => handleCycleChange(cycle)}
-                    style={{
-                      padding: '0.5rem 1rem',
-                      border: 'none',
-                      background: 'transparent',
-                      borderRadius: '8px',
-                      fontWeight: '600',
-                      fontSize: '0.9rem',
-                      margin: '0 0.125rem',
-                      color: selectedCycle === cycle ? '#FFFFFF' : '#80868B',
-                      cursor: 'pointer',
-                      transition: 'all 0.3s ease',
-                      position: 'relative',
-                      zIndex: 2
-                    }}
-                  >
-                    {cycle === 'monthly' ? 'Monthly' : cycle === 'halfyearly' ? '6 Months' : 'Annual'}
-                  </button>
-                ))}
+                {['annual', 'halfyearly', 'monthly'].map((cycle) => {
+                  const isAnnual = cycle === 'annual';
+                  const isSelected = selectedCycle === cycle;
+                  
+                  return (
+                    <button
+                      key={cycle}
+                      onClick={() => handleCycleChange(cycle)}
+                      title={
+                        isAnnual && !isSelected ? 'Save ₹9,000 annually - Only ₹1,250/month' :
+                        cycle === 'halfyearly' && !isSelected ? 'Save ₹4,000 - Only ₹1,667/month' :
+                        cycle === 'monthly' && !isSelected ? 'Pay ₹2,000 every month' :
+                        undefined
+                      }
+                      style={{
+                        height: '44px',
+                        padding: '0.5rem 1rem',
+                        border: 'none',
+                        background: 'transparent',
+                        borderRadius: '8px',
+                        fontWeight: isAnnual ? '700' : '600',
+                        fontSize: '0.9rem',
+                        margin: '0 0.125rem',
+                        color: isSelected ? '#FFFFFF' : (isAnnual ? '#202124' : '#80868B'),
+                        cursor: 'pointer',
+                        transition: 'all 0.3s ease',
+                        position: 'relative',
+                        zIndex: 2,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        letterSpacing: isAnnual ? '-0.01em' : '0',
+                        boxShadow: isAnnual && !isSelected ? '0 0 0 1px rgba(122, 33, 135, 0.1)' : 'none'
+                      }}
+                    >
+                      {isAnnual ? '★ Annual' : cycle === 'monthly' ? 'Monthly' : '6 Months'}
+                    </button>
+                  );
+                })}
                 {/* Selector Indicator */}
                 <div 
                   style={{
                     position: 'absolute',
-                    background: '#7A2187',
+                    background: selectedCycle === 'annual' ? 
+                      'linear-gradient(135deg, #7A2187 0%, #9B4AA3 100%)' : '#7A2187',
                     borderRadius: '8px',
                     transition: 'all 0.3s ease',
                     top: '0.5rem',
@@ -648,9 +689,12 @@ const PricingPage = () => {
                     width: 'calc(33.333% - 0.333rem)',
                     height: 'calc(100% - 1rem)',
                     zIndex: 1,
-                    transform: selectedCycle === 'monthly' ? 'translateX(0%)' : 
+                    transform: selectedCycle === 'annual' ? 'translateX(0%)' : 
                                selectedCycle === 'halfyearly' ? 'translateX(100%)' : 
-                               'translateX(200%)'
+                               'translateX(200%)',
+                    boxShadow: selectedCycle === 'annual' ? 
+                      '0 4px 12px rgba(122, 33, 135, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1) inset' : 
+                      '0 2px 4px rgba(122, 33, 135, 0.1)'
                   }}
                 />
               </div>
@@ -667,7 +711,6 @@ const PricingPage = () => {
                   <span className="price">₹0</span>
                   <span className="period">/forever</span>
                 </div>
-                <p className="plan-description">Perfect to get started</p>
               </div>
               
               <div className="features-list">
@@ -712,10 +755,16 @@ const PricingPage = () => {
             {/* Premium Card */}
             <div className="pricing-card premium-card featured">
               
-              <div className="popular-badge">
-                <i className="fas fa-star"></i>
-                <span>Most Popular</span>
-              </div>
+              {selectedCycle === 'annual' && (
+                <div className="popular-badge" style={{
+                  transition: 'opacity 0.3s ease, transform 0.3s ease',
+                  opacity: 1,
+                  transform: 'translateX(-50%) scale(1)'
+                }}>
+                  <i className="fas fa-star"></i>
+                  <span>Most Popular</span>
+                </div>
+              )}
               
               <div className="card-header">
                 <h3 className="plan-name">Premium</h3>
@@ -723,27 +772,30 @@ const PricingPage = () => {
                   <span className="price">{priceData[selectedCycle].price}</span>
                   <span className="period">{priceData[selectedCycle].period}</span>
                 </div>
-                {displaySavings && (
-                  <div style={{
-                    textAlign: 'center',
-                    marginTop: '0.75rem',
-                    marginBottom: '0.5rem'
+                {/* Unified Animated Badge */}
+                <div style={{
+                  textAlign: 'center',
+                  marginTop: '0.75rem',
+                  marginBottom: '0.5rem'
+                }}>
+                  <span style={{
+                    display: 'inline-block',
+                    background: selectedCycle === 'monthly' ? 'rgba(255, 107, 53, 0.1)' : 
+                               (selectedCycle === 'annual' ? 'rgba(40, 167, 69, 0.15)' : 'rgba(40, 167, 69, 0.1)'),
+                    color: selectedCycle === 'monthly' ? '#FF6B35' : '#28A745',
+                    padding: '0.3rem 0.75rem',
+                    borderRadius: '12px',
+                    fontSize: '0.8125rem',
+                    fontWeight: '500',
+                    border: selectedCycle === 'monthly' ? '1px solid rgba(255, 107, 53, 0.2)' :
+                           `1px solid ${selectedCycle === 'annual' ? 'rgba(40, 167, 69, 0.3)' : 'rgba(40, 167, 69, 0.2)'}`,
+                    boxShadow: selectedCycle === 'annual' ? '0 2px 8px rgba(40, 167, 69, 0.15)' : 
+                              (selectedCycle === 'monthly' ? '0 2px 8px rgba(255, 107, 53, 0.1)' : 'none'),
+                    transition: 'all 0.7s ease'
                   }}>
-                    <span style={{
-                      display: 'inline-block',
-                      background: 'rgba(40, 167, 69, 0.1)',
-                      color: '#28A745',
-                      padding: '0.25rem 0.625rem',
-                      borderRadius: '12px',
-                      fontSize: '0.8125rem',
-                      fontWeight: '500',
-                      border: '1px solid rgba(40, 167, 69, 0.2)'
-                    }}>
-                      {displaySavings}
-                    </span>
-                  </div>
-                )}
-                <p className="plan-description">Everything you need to excel</p>
+                    {formatBadgeDisplay(animatedBadgeNumber, selectedCycle)}
+                  </span>
+                </div>
               </div>
               
               <div className="features-list">
@@ -786,6 +838,7 @@ const PricingPage = () => {
                   <span>7-day money back guarantee</span>
                 </div>
               </div>
+              
             </div>
           </div>
           
