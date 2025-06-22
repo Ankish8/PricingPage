@@ -830,7 +830,7 @@ const PricingPage = () => {
                   color: 'white'
                 }}
               >
-                Start Your Journey
+                Unlock Everything Now
               </RainbowButton>
               <div className="trial-note" style={{ textAlign: 'center' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
@@ -990,7 +990,7 @@ const PricingPage = () => {
                 freemiumColor="#9AA0A6"
                 premiumIcon="infinity"
                 premiumText="Unlimited + Priority Matching"
-                strategicRationale="Miss 94% of job matches. Premium users get 12x more relevant opportunities."
+                strategicRationale="Access 12x more opportunities than basic users - don't miss 94% of job matches."
               />
 
               <FeatureRow 
@@ -1077,7 +1077,7 @@ const PricingPage = () => {
                 freemiumColor="#9AA0A6"
                 premiumIcon="video"
                 premiumText="Weekly Video Calls"
-                strategicRationale="No mentor = project failure risk. 82% of successful projects had mentor guidance."
+                strategicRationale="Join the 82% who succeed with mentors - no mentor = project failure risk."
               />
             </div>
 
@@ -1774,7 +1774,7 @@ const PricingPage = () => {
               marginBottom: '0.75rem',
               lineHeight: '1.2'
             }}>
-              Stop Reading. Start Transforming.
+              Your Competition Isn't Waiting. Why Are You?
             </h2>
             
             <p style={{
