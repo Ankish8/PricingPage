@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { ShimmerButton } from './src/components/magicui/shimmer-button';
 import { MagicCard } from './src/components/magicui/magic-card';
 import { ShineBorder } from './src/components/magicui/shine-border';
+import { BorderBeam } from './src/components/magicui/border-beam';
 import { NumberTicker } from './src/components/magicui/number-ticker';
 import { AuroraText } from './src/components/magicui/aurora-text';
 import { RainbowButton } from './src/components/magicui/rainbow-button';
@@ -351,6 +352,7 @@ const PricingPage = () => {
             gap: 2rem;
             max-width: 800px;
             margin: 0 auto;
+            padding-top: 2rem;
           }
 
           .pricing-card {
@@ -360,55 +362,43 @@ const PricingPage = () => {
             padding: 2.5rem 2rem;
             position: relative;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
           }
 
           .pricing-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
           }
 
           .freemium-card {
-            border-color: var(--gray-300);
+            border: 1px solid rgba(218, 220, 224, 0.4);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+          }
+
+          .freemium-card:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
           }
 
           .premium-card {
-            border-color: var(--primary);
+            border: 1px solid rgba(130, 83, 194, 0.2);
             background: linear-gradient(135deg, rgba(122, 33, 135, 0.02) 0%, var(--white) 100%);
+            box-shadow: 0 8px 32px rgba(130, 83, 194, 0.15);
+          }
+
+          .premium-card:hover {
+            box-shadow: 0 16px 48px rgba(130, 83, 194, 0.2);
           }
 
           .premium-card.featured {
             transform: scale(1.05);
-            box-shadow: 0 12px 40px rgba(122, 33, 135, 0.15);
             position: relative;
             z-index: 10;
           }
 
           .premium-card.featured:hover {
             transform: scale(1.05) translateY(-4px);
-            box-shadow: 
-              0 15px 30px rgba(122, 33, 135, 0.18),
-              0 25px 50px rgba(122, 33, 135, 0.08);
           }
 
-          .premium-card.featured::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: radial-gradient(circle at center, rgba(122, 33, 135, 0.05), transparent 70%);
-            border-radius: 22px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
-            pointer-events: none;
-          }
-
-          .premium-card.featured:hover::before {
-            opacity: 1;
-          }
 
           .popular-badge {
             position: absolute;
@@ -424,7 +414,6 @@ const PricingPage = () => {
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            box-shadow: 0 4px 12px rgba(122, 33, 135, 0.3);
           }
 
           .card-header {
@@ -753,13 +742,38 @@ const PricingPage = () => {
             </div>
 
             {/* Premium Card */}
-            <div className="pricing-card premium-card featured">
+            <div className="pricing-card premium-card featured" style={{ overflow: 'visible', position: 'relative' }}>
+              <BorderBeam 
+                size={400} 
+                duration={6} 
+                delay={0} 
+                className="from-transparent via-[#8253C2] via-[#8253C2] to-transparent"
+              />
+              <BorderBeam 
+                size={400} 
+                duration={6} 
+                delay={1.5} 
+                className="from-transparent via-[#F45346] via-[#F45346] to-transparent"
+              />
+              <BorderBeam 
+                size={400} 
+                duration={6} 
+                delay={3} 
+                className="from-transparent via-[#9B4AA3] via-[#9B4AA3] to-transparent"
+              />
+              <BorderBeam 
+                size={400} 
+                duration={6} 
+                delay={4.5} 
+                className="from-transparent via-[#E8D5EA] via-[#E8D5EA] to-transparent"
+              />
               
               {selectedCycle === 'annual' && (
                 <div className="popular-badge" style={{
                   transition: 'opacity 0.3s ease, transform 0.3s ease',
                   opacity: 1,
-                  transform: 'translateX(-50%) scale(1)'
+                  transform: 'translateX(-50%) scale(1)',
+                  zIndex: 20
                 }}>
                   <i className="fas fa-star"></i>
                   <span>Most Popular</span>
