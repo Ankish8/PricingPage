@@ -1,0 +1,45 @@
+:root {
+  /* Primary Colors */
+  --primary: #7A2187;
+  --primary-light: #9B4AA3;
+  --primary-dark: #5A1865;
+  --primary-lighter: #E8D5EA;
+  
+  /* Secondary Colors */
+  --secondary: #2187A7;
+  --secondary-light: #4AA3C4;
+  --secondary-dark: #186585;
+  
+  /* Accent Colors */
+  --accent-gold: #F7B32B;
+  --accent-green: #28A745;
+  --accent-coral: #FF6B6B;
+  
+  /* Neutral Colors */
+  --white: #FFFFFF;
+  --gray-50: #F8F9FA;
+  --gray-100: #F1F3F4;
+  --gray-200: #E8EAED;
+  --gray-300: #DADCE0;
+  --gray-400: #BDC1C6;
+  --gray-500: #9AA0A6;
+  --gray-600: #80868B;
+  --gray-700: #5F6368;
+  --gray-800: #3C4043;
+  --gray-900: #202124;
+  --black: #000000;
+  
+  /* Semantic Colors */
+  --success: #28A745;
+  --warning: #FFC107;
+  --error: #DC3545;
+  --info: #17A2B8;
+  
+  /* Pricing Specific */
+  --pricing-bg: var(--gray-50);
+  --pricing-card-bg: var(--white);
+  --pricing-featured-bg: var(--primary);
+  --pricing-featured-text: var(--white);
+  --pricing-border: var(--gray-200);
+  --pricing-shadow: rgba(122, 33, 135, 0.1);
+}

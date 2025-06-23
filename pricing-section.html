@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATCH Premium Pricing</title>
+    <link rel="stylesheet" href="color-palette.css">
+    <link rel="stylesheet" href="pricing-section-styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+    <section class="pricing-section" data-next-section>
+        <div class="container">
+            <div class="pricing-header" data-aos="fade-up">
+                <h2 class="section-title">Choose Your Plan</h2>
+                <p class="section-subtitle">Flexible pricing that grows with your career journey</p>
+                
+                <!-- Billing Toggle -->
+                <div class="billing-toggle" data-aos="fade-up" data-aos-delay="100">
+                    <div class="toggle-wrapper">
+                        <span class="toggle-label">Monthly</span>
+                        <div class="toggle-switch">
+                            <input type="radio" id="monthly" name="billing" value="monthly">
+                            <input type="radio" id="quarterly" name="billing" value="quarterly">
+                            <input type="radio" id="annual" name="billing" value="annual" checked>
+                            <div class="toggle-slider"></div>
+                            <div class="toggle-options">
+                                <label for="monthly" class="toggle-option">Monthly</label>
+                                <label for="quarterly" class="toggle-option">Half-Yearly</label>
+                                <label for="annual" class="toggle-option">
+                                    Annual
+                                    <span class="save-badge">Save 38%</span>
+                                </label>
+                            </div>
+                        </div>
+                        <span class="toggle-label">Annual</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pricing Cards -->
+            <div class="pricing-cards" data-aos="fade-up" data-aos-delay="200">
+                <!-- Freemium Card -->
+                <div class="pricing-card freemium-card">
+                    <div class="card-header">
+                        <h3 class="plan-name">Freemium</h3>
+                        <div class="price-container">
+                            <span class="price">₹0</span>
+                            <span class="period">/forever</span>
+                        </div>
+                        <p class="plan-description">Perfect to get started</p>
+                    </div>
+                    
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span>1 job application per category</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span>Basic profile building</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span>Access to hackathons</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span>1 NCET test attempt/year</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span>5 sandbox instances</span>
+                        </div>
+                        <div class="feature-item limited">
+                            <i class="fas fa-lock feature-icon"></i>
+                            <span>Limited course access (20%)</span>
+                        </div>
+                    </div>
+                    
+                    <button class="cta-button secondary">Current Plan</button>
+                </div>
+
+                <!-- Premium Card -->
+                <div class="pricing-card premium-card featured">
+                    <div class="popular-badge">
+                        <i class="fas fa-star"></i>
+                        <span>Most Popular</span>
+                    </div>
+                    
+                    <div class="card-header">
+                        <h3 class="plan-name">Premium</h3>
+                        <div class="price-container">
+                            <span class="price" data-monthly="₹2,000" data-quarterly="₹20,000" data-annual="₹15,000">₹15,000</span>
+                            <span class="period" data-monthly="/month" data-quarterly="/6 months" data-annual="/year">/year</span>
+                        </div>
+                        <div class="price-note" data-monthly="" data-quarterly="₹4,000 savings" data-annual="₹9,000 savings">₹9,000 savings</div>
+                        <p class="plan-description">Everything you need to excel</p>
+                    </div>
+                    
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span><strong>Unlimited</strong> job applications</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span><strong>Premium badge</strong> & corporate visibility</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span><strong>Full AI career roadmap</strong></span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span><strong>5 NCET test attempts</strong></span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span><strong>Unlimited</strong> sandbox access</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span><strong>Full course access</strong> + certificates</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span><strong>NCET Plus program</strong> access</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span><strong>Live mentor support</strong></span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check feature-icon"></i>
+                            <span><strong>Priority support</strong></span>
+                        </div>
+                    </div>
+                    
+                    <button class="cta-button primary">Start Free Trial</button>
+                    <p class="trial-note">7-day free trial • No credit card required</p>
+                </div>
+            </div>
+
+            <!-- Trust Signals -->
+            <div class="trust-section" data-aos="fade-up" data-aos-delay="300">
+                <div class="guarantee">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>7-day money-back guarantee</span>
+                </div>
+                <div class="security">
+                    <i class="fas fa-lock"></i>
+                    <span>Secure payment processing</span>
+                </div>
+                <div class="support">
+                    <i class="fas fa-headset"></i>
+                    <span>24/7 customer support</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 600,
+            easing: 'ease-out-quart',
+            once: true,
+            offset: 50
+        });
+
+        // Billing toggle functionality
+        const billingInputs = document.querySelectorAll('input[name="billing"]');
+        const priceElement = document.querySelector('.premium-card .price');
+        const periodElement = document.querySelector('.premium-card .period');
+        const noteElement = document.querySelector('.premium-card .price-note');
+
+        billingInputs.forEach(input => {
+            input.addEventListener('change', function() {
+                const selectedPlan = this.value;
+                
+                priceElement.textContent = priceElement.dataset[selectedPlan];
+                periodElement.textContent = periodElement.dataset[selectedPlan];
+                noteElement.textContent = noteElement.dataset[selectedPlan];
+                
+                // Update toggle slider position
+                updateToggleSlider(selectedPlan);
+            });
+        });
+
+        function updateToggleSlider(plan) {
+            const slider = document.querySelector('.toggle-slider');
+            const positions = {
+                'monthly': '0%',
+                'quarterly': '33.33%',
+                'annual': '66.66%'
+            };
+            slider.style.left = positions[plan];
+        }
+
+        // Initialize slider position
+        updateToggleSlider('annual');
+    </script>
+</body>
+</html>
