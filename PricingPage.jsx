@@ -544,37 +544,6 @@ const PricingPage = () => {
           overflow: 'hidden'
         }}
       >
-        {/* Gradient Blobs */}
-        <div 
-          style={{
-            position: 'absolute',
-            top: '-100px',
-            right: '-450px',
-            width: '600px',
-            height: '600px',
-            borderRadius: '600px',
-            background: 'linear-gradient(180deg, rgba(242, 47, 176, 0.4) 0%, rgba(245, 138, 37, 0.00) 100%, rgba(112, 97, 163, 0.5) 100%)',
-            filter: 'blur(50px)',
-            zIndex: 0,
-            pointerEvents: 'none',
-            opacity: 1
-          }}
-        />
-        <div 
-          style={{
-            position: 'absolute',
-            top: '-100px',
-            left: '-450px',
-            width: '600px',
-            height: '600px',
-            borderRadius: '600px',
-            background: 'linear-gradient(180deg, rgba(33, 135, 167, 0.3) 0%, rgba(122, 33, 135, 0.2) 60%, rgba(247, 179, 43, 0.00) 100%)',
-            filter: 'blur(50px)',
-            zIndex: 0,
-            pointerEvents: 'none',
-            opacity: 1
-          }}
-        />
         
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className="pricing-header">
@@ -786,6 +755,25 @@ const PricingPage = () => {
                   <span className="price">{priceData[selectedCycle].price}</span>
                   <span className="period">{priceData[selectedCycle].period}</span>
                 </div>
+                
+                {/* Effective Monthly Cost */}
+                {selectedCycle !== 'monthly' && (
+                  <div style={{
+                    textAlign: 'center',
+                    marginTop: '0.25rem',
+                    marginBottom: '0.25rem'
+                  }}>
+                    <span style={{
+                      fontSize: '0.875rem',
+                      color: '#5F6368',
+                      fontWeight: '500',
+                      fontStyle: 'italic'
+                    }}>
+                      Only ₹{selectedCycle === 'annual' ? '1,250' : '3,333'}/month
+                    </span>
+                  </div>
+                )}
+                
                 {/* Unified Animated Badge */}
                 <div style={{
                   textAlign: 'center',
@@ -844,7 +832,7 @@ const PricingPage = () => {
                   color: 'white'
                 }}
               >
-                Unlock Everything Now
+                Get Premium Now
               </RainbowButton>
               <div className="trial-note" style={{ textAlign: 'center' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
@@ -936,7 +924,7 @@ const PricingPage = () => {
           background: 'rgba(248, 249, 250, 0.95)',
           backdropFilter: 'blur(8px)',
           zIndex: 10,
-          padding: '1.75rem 0',
+          padding: '1rem 0',
           borderBottom: '1px solid #e8eaed'
         }}>
           <div style={{
@@ -991,8 +979,8 @@ const PricingPage = () => {
           {/* Feature Categories */}
           <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
             
-            {/* Core Value Propositions */}
-            <div data-section-id="core-benefits" style={{ marginBottom: '4rem' }}>
+            {/* Career Gateway */}
+            <div data-section-id="career-gateway" style={{ marginBottom: '2.5rem' }}>
               <div style={{
                 position: 'sticky',
                 top: '57px',
@@ -1012,33 +1000,58 @@ const PricingPage = () => {
                   gap: '0.75rem',
                   margin: 0
                 }}>
-                  <i className="fas fa-bullseye" style={{ color: '#7A2187', fontSize: '1.125rem' }}></i>
-                  Core Career Benefits
+                  <i className="fas fa-door-open" style={{ color: '#7A2187', fontSize: '1.125rem' }}></i>
+                  Career Gateway
                 </h3>
               </div>
               
               <FeatureRow 
-                icon="door-open"
-                title="Job Applications"
-                description="Apply to career opportunities across all categories"
-                freemiumIcon="lock"
-                freemiumText="1 per category"
+                icon="user"
+                title="Profile Building"
+                description="Create and enhance your professional profile"
+                freemiumIcon="user"
+                freemiumText="Basic Profile Creation"
                 freemiumColor="#9AA0A6"
-                premiumIcon="infinity"
-                premiumText="Unlimited + Priority Matching"
-                strategicRationale="Access 12x more opportunities than basic users - don't miss 94% of job matches."
+                premiumIcon="crown"
+                premiumText="Enhanced + Video Resume (For all Job roles added in career aspirants) + AI Optimization"
+                strategicRationale="The basic offering serves as an entry point, while Premium significantly enhances career impact through advanced features like video resumes and AI optimization."
+              />
+
+              <FeatureRow 
+                icon="trophy"
+                title="Hackathons"
+                description="Participate in coding competitions and challenges"
+                freemiumIcon="check-circle"
+                freemiumText="Full Access"
+                freemiumColor="#28A745"
+                premiumIcon="check-circle"
+                premiumText="Full Access"
+                premiumColor="#28A745"
+                strategicRationale="Designed for maximum user engagement and data collection, ensuring both tiers can participate in these valuable events."
               />
 
               <FeatureRow 
                 icon="eye"
-                title="Corporate Visibility"
+                title="Corporate Visibility (Premium Candidate Pool)"
                 description="Enhanced visibility to potential employers"
                 freemiumIcon="eye-slash"
                 freemiumText="Not Available"
                 freemiumColor="#9AA0A6"
                 premiumIcon="star"
-                premiumText="Premium Badge + Recruiter Pool"
-                strategicRationale="Invisible to premium recruiters. 85% of top jobs go to premium pool candidates only."
+                premiumText="Full Access (Aligned with Leaderboard)"
+                strategicRationale="The outcome of career advancement creates aspiration and urgency, as Premium users gain enhanced visibility to potential employers."
+              />
+
+              <FeatureRow 
+                icon="briefcase"
+                title="Career Opportunities"
+                description="Apply to job opportunities across all categories"
+                freemiumIcon="lock"
+                freemiumText="1 Opportunity Per Category"
+                freemiumColor="#9AA0A6"
+                premiumIcon="infinity"
+                premiumText="Unlimited + Priority Job Matching"
+                strategicRationale="Generates immediate conversion pressure by restricting free job search options, highlighting the value of unlimited and prioritized access in Premium."
               />
 
               <FeatureRow 
@@ -1049,76 +1062,13 @@ const PricingPage = () => {
                 freemiumText="Not Available"
                 freemiumColor="#9AA0A6"
                 premiumIcon="video"
-                premiumText="Weekly 1-on-1 Calls"
-                strategicRationale="No expert guidance = 67% longer career transition time. Premium users land jobs 3x faster."
+                premiumText="Weekly - 1 Free Call"
+                strategicRationale="Significantly increases retention and perceived value by offering personalized guidance and support to Premium members."
               />
             </div>
 
-            {/* Learning & Development */}
-            <div data-section-id="learning" style={{ marginBottom: '4rem' }}>
-              <div style={{
-                position: 'sticky',
-                top: '57px',
-                background: 'rgba(248, 249, 250, 0.95)',
-                backdropFilter: 'blur(10px)',
-                zIndex: 9,
-                padding: '1rem 1rem',
-                borderBottom: '2px solid #7A2187',
-                marginBottom: '1rem'
-              }}>
-                <h3 style={{
-                  fontSize: '1.375rem',
-                  fontWeight: '600',
-                  color: '#202124',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.75rem',
-                  margin: 0
-                }}>
-                  <i className="fas fa-brain" style={{ color: '#7A2187', fontSize: '1.125rem' }}></i>
-                  Learning & Development
-                </h3>
-              </div>
-              
-              <FeatureRow 
-                icon="award"
-                title="Courses & Certification"
-                description="Access to skill development courses and certificates"
-                freemiumIcon="lock"
-                freemiumText="20% Access, No Certificates"
-                freemiumColor="#9AA0A6"
-                premiumIcon="certificate"
-                premiumText="Full Access + Certificates"
-                strategicRationale="No certificate = no credential value. Employers reject 91% of uncertified skill claims."
-              />
-
-              <FeatureRow 
-                icon="map-marked-alt"
-                title="AI Career Roadmap"
-                description="Personalized AI-powered career guidance"
-                freemiumIcon="lock"
-                freemiumText="Basic Insights (20%)"
-                freemiumColor="#9AA0A6"
-                premiumIcon="brain"
-                premiumText="Complete AI Roadmap"
-                strategicRationale="80% of your roadmap hidden = career detours. Complete roadmap users reach goals 4x faster."
-              />
-
-              <FeatureRow 
-                icon="user-tie"
-                title="Live Mentor Support"
-                description="Expert guidance for project development"
-                freemiumIcon="ban"
-                freemiumText="Not Available"
-                freemiumColor="#9AA0A6"
-                premiumIcon="video"
-                premiumText="Weekly Video Calls"
-                strategicRationale="Join the 82% who succeed with mentors - no mentor = project failure risk."
-              />
-            </div>
-
-            {/* Skill Assessment & Practice */}
-            <div data-section-id="assessment" style={{ marginBottom: '4rem' }}>
+            {/* Assessments */}
+            <div data-section-id="assessments" style={{ marginBottom: '2.5rem' }}>
               <div style={{
                 position: 'sticky',
                 top: '57px',
@@ -1139,7 +1089,7 @@ const PricingPage = () => {
                   margin: 0
                 }}>
                   <i className="fas fa-clipboard-check" style={{ color: '#7A2187', fontSize: '1.125rem' }}></i>
-                  Skill Assessment & Practice
+                  Assessments
                 </h3>
               </div>
               
@@ -1148,48 +1098,28 @@ const PricingPage = () => {
                 title="NCET Test Attempts"
                 description="National Career Enhancement Test attempts"
                 freemiumIcon="exclamation-triangle"
-                freemiumText="1 Attempt/Year"
+                freemiumText="1 Attempt Per Year"
+                freemiumColor="#FFC107"
                 premiumIcon="chart-bar"
-                premiumText="5 Attempts + Analytics"
-                strategicRationale="One chance = one mistake ends your year. Premium users improve scores by 23% on retakes."
+                premiumText="5 Attempts + Score Analytics"
+                strategicRationale="Designed to leverage performance improvement psychology, encouraging upgrades for users seeking more practice and deeper insights."
               />
 
               <FeatureRow 
-                icon="project-diagram"
-                title="Capstone Projects"
-                description="Real-world project development with AI assistance"
-                freemiumIcon="exclamation-triangle"
-                freemiumText="1 Project, No AI"
-                premiumIcon="robot"
-                premiumText="3 Projects + AI Support"
-                strategicRationale="Solo projects = slower development. AI support reduces project time by 65%."
-              />
-
-              <FeatureRow 
-                icon="desktop"
-                title="Coding Sandbox"
-                description="Advanced coding environments for practice"
-                freemiumIcon="exclamation-triangle"
-                freemiumText="5 Instances"
-                premiumIcon="infinity"
-                premiumText="Unlimited Access"
-                strategicRationale="Limited practice = limited skills. 5 instances filled in 2 days by active coders."
-              />
-
-              <FeatureRow 
-                icon="chart-line"
+                icon="clipboard-check"
                 title="Career Assessments"
                 description="Personality and skill assessment tests"
                 freemiumIcon="exclamation-triangle"
-                freemiumText="2 Tests Only"
+                freemiumText="2 Free Tests Only"
+                freemiumColor="#FFC107"
                 premiumIcon="infinity"
-                premiumText="Unlimited + Analytics"
-                strategicRationale="Incomplete career profile = wrong path. 89% find their ideal role only after 3+ assessments."
+                premiumText="Unlimited Tests + Advanced Analytics"
+                strategicRationale="Creates upgrade urgency by limiting free access, prompting users to convert for comprehensive career exploration and advanced insights."
               />
             </div>
 
-            {/* Exclusive Programs & Benefits */}
-            <div data-section-id="exclusive" style={{ marginBottom: '4rem' }}>
+            {/* Upskill Hub */}
+            <div data-section-id="upskill-hub" style={{ marginBottom: '2.5rem' }}>
               <div style={{
                 position: 'sticky',
                 top: '57px',
@@ -1209,8 +1139,8 @@ const PricingPage = () => {
                   gap: '0.75rem',
                   margin: 0
                 }}>
-                  <i className="fas fa-crown" style={{ color: '#7A2187', fontSize: '1.125rem' }}></i>
-                  Exclusive Programs & Benefits
+                  <i className="fas fa-rocket" style={{ color: '#7A2187', fontSize: '1.125rem' }}></i>
+                  Upskill Hub
                 </h3>
               </div>
               
@@ -1222,38 +1152,37 @@ const PricingPage = () => {
                 freemiumText="Not Available"
                 freemiumColor="#9AA0A6"
                 premiumIcon="video"
-                premiumText="Full Program + Live Training"
-                strategicRationale="Miss live training = miss networking. 78% of premium program graduates get job offers."
+                premiumText="1 Program + Live Training Access + 1 Video Recorded Sessions"
+                strategicRationale="A high-value, exclusive offering that justifies the investment in the Premium tier through specialized programs and direct expert interaction."
               />
 
               <FeatureRow 
-                icon="rocket"
-                title="TalentX Platform"
-                description="Access to exclusive talent marketplace"
-                freemiumIcon="ban"
-                freemiumText="Not Available"
+                icon="map-marked-alt"
+                title="Career Recommendations"
+                description="Personalized AI-powered career guidance"
+                freemiumIcon="lock"
+                freemiumText="Basic Insights Only (20%)"
                 freemiumColor="#9AA0A6"
-                premiumIcon="unlock"
-                premiumText="Full Access"
-                strategicRationale="Locked out of exclusive opportunities. TalentX has 93% premium-only job postings."
+                premiumIcon="brain"
+                premiumText="Full AI-Powered Career Roadmap"
+                strategicRationale="Creates a strong emotional trigger for upgrades by providing limited insights in the free tier and a comprehensive, AI-driven career roadmap in Premium."
               />
 
               <FeatureRow 
-                icon="graduation-cap"
-                title="WAVE Scholarship"
-                description="Exclusive scholarship opportunities for top performers"
-                freemiumIcon="ban"
-                freemiumText="Not Available"
+                icon="certificate"
+                title="Courses & Certification"
+                description="Access to skill development courses and certificates"
+                freemiumIcon="lock"
+                freemiumText="20% Course Access of 5 Courses - No Certificate"
                 freemiumColor="#9AA0A6"
-                premiumIcon="money-bill-wave"
-                premiumText="₹25,000 Scholarship Chance"
-                premiumColor="#28A745"
-                strategicRationale="Miss ₹25,000 potential savings. Only 200 premium users eligible per quarter."
+                premiumIcon="award"
+                premiumText="100% Access + Certificate"
+                strategicRationale="Implements strategic friction during the learning journey, motivating upgrades for full course access and official certification."
               />
             </div>
 
-            {/* Platform Features & Engagement */}
-            <div data-section-id="platform" style={{ marginBottom: '4rem' }}>
+            {/* Code Playground and Practice */}
+            <div data-section-id="code-playground" style={{ marginBottom: '2.5rem' }}>
               <div style={{
                 position: 'sticky',
                 top: '57px',
@@ -1273,54 +1202,84 @@ const PricingPage = () => {
                   gap: '0.75rem',
                   margin: 0
                 }}>
-                  <i className="fas fa-layer-group" style={{ color: '#7A2187', fontSize: '1.125rem' }}></i>
-                  Platform Features & Engagement
+                  <i className="fas fa-code" style={{ color: '#7A2187', fontSize: '1.125rem' }}></i>
+                  Code Playground and Practice
                 </h3>
               </div>
               
               <FeatureRow 
-                icon="user-circle"
-                title="Profile Building"
-                description="Create and customize your professional profile"
+                icon="desktop"
+                title="Sandbox Pro Accessibility"
+                description="Advanced coding environments for practice"
                 freemiumIcon="exclamation-triangle"
-                freemiumText="Basic Profile Only"
-                premiumIcon="crown"
-                premiumText="Enhanced + Video Resume + AI"
-                strategicRationale="Limited profile = limited visibility. Basic profiles get 73% fewer corporate views."
+                freemiumText="5 Sandbox Instances"
+                freemiumColor="#FFC107"
+                premiumIcon="infinity"
+                premiumText="Unlimited"
+                strategicRationale="Provides limited exposure in the free tier, with unlimited access in Premium to showcase the full power of our AI-driven learning environment."
               />
 
               <FeatureRow 
-                icon="chart-line"
-                title="Leaderboard Status"
-                description="Showcase your achievements and ranking"
-                freemiumIcon="user"
-                freemiumText="Standard Listing"
-                premiumIcon="crown"
-                premiumText="Premium Badge Highlighting"
-                strategicRationale="Invisible achievements = missed opportunities. Premium highlights get 4x more recruiter attention."
+                icon="project-diagram"
+                title="Capstone Projects & AI Support"
+                description="Real-world project development with AI assistance"
+                freemiumIcon="exclamation-triangle"
+                freemiumText="1 Capstone Project - No AI Support"
+                freemiumColor="#FFC107"
+                premiumIcon="robot"
+                premiumText="3 Capstone Projects - With AI Support"
+                strategicRationale="This differentiation is designed to upscale the practical learning experience and demonstrate the progressive value of our offerings."
               />
 
+              <FeatureRow 
+                icon="user-tie"
+                title="Live Mentor Project Support"
+                description="Expert guidance for project development"
+                freemiumIcon="ban"
+                freemiumText="Not Available"
+                freemiumColor="#9AA0A6"
+                premiumIcon="video"
+                premiumText="Available - Weekly 1 Free Call Available (Similar to Expert Career Counselling)"
+                strategicRationale="This feature serves as a critical differentiator and a high-value incentive for the Premium tier. While Freemium users can engage with projects independently, Premium users gain access to personalized, expert human guidance."
+              />
+            </div>
+
+            {/* Add Ons */}
+            <div data-section-id="add-ons" style={{ marginBottom: '2.5rem' }}>
+              <div style={{
+                position: 'sticky',
+                top: '57px',
+                background: 'rgba(248, 249, 250, 0.95)',
+                backdropFilter: 'blur(10px)',
+                zIndex: 9,
+                padding: '1rem 1rem',
+                borderBottom: '2px solid #7A2187',
+                marginBottom: '1rem'
+              }}>
+                <h3 style={{
+                  fontSize: '1.375rem',
+                  fontWeight: '600',
+                  color: '#202124',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.75rem',
+                  margin: 0
+                }}>
+                  <i className="fas fa-plus" style={{ color: '#7A2187', fontSize: '1.125rem' }}></i>
+                  Add Ons
+                </h3>
+              </div>
+              
               <FeatureRow 
                 icon="trophy"
                 title="Reward System"
                 description="Earn and redeem points for platform activities"
                 freemiumIcon="exclamation-triangle"
-                freemiumText="50% Rewards Cap"
+                freemiumText="Rewards capped at 50% of maximum achievable points"
+                freemiumColor="#FFC107"
                 premiumIcon="star"
-                premiumText="Unlimited Rewards"
-                strategicRationale="Half rewards = half motivation. Premium users earn 2x more valuable benefits."
-              />
-
-              <FeatureRow 
-                icon="trophy"
-                title="Hackathons"
-                description="Participate in coding competitions and challenges"
-                freemiumIcon="check-circle"
-                freemiumText="Full Access"
-                freemiumColor="#28A745"
-                premiumIcon="check-circle"
-                premiumText="Full Access"
-                premiumColor="#28A745"
+                premiumText="Rewards Uncapped"
+                strategicRationale="Differentiates the user experience by offering enhanced incentives and recognition to Premium subscribers. Candidates can further use these reward points to redeem other items within the platform."
               />
 
               <FeatureRow 
@@ -1331,9 +1290,73 @@ const PricingPage = () => {
                 freemiumText="-"
                 freemiumColor="#9AA0A6"
                 premiumIcon="shield-check"
-                premiumText="7-Day Risk-Free Trial"
+                premiumText="7-Day Money Back Guarantee"
                 premiumColor="#28A745"
-                strategicRationale="Risk-free commitment. 96% of users continue after experiencing premium benefits."
+                strategicRationale="An extended trial period that instills confidence and aims to increase conversion rates after users experience the full Premium benefits."
+              />
+            </div>
+
+            {/* Gamified Learning and Additional Programs */}
+            <div data-section-id="gamified-learning" style={{ marginBottom: '2.5rem' }}>
+              <div style={{
+                position: 'sticky',
+                top: '57px',
+                background: 'rgba(248, 249, 250, 0.95)',
+                backdropFilter: 'blur(10px)',
+                zIndex: 9,
+                padding: '1rem 1rem',
+                borderBottom: '2px solid #7A2187',
+                marginBottom: '1rem'
+              }}>
+                <h3 style={{
+                  fontSize: '1.375rem',
+                  fontWeight: '600',
+                  color: '#202124',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.75rem',
+                  margin: 0
+                }}>
+                  <i className="fas fa-gamepad" style={{ color: '#7A2187', fontSize: '1.125rem' }}></i>
+                  Gamified Learning and Additional Programs
+                </h3>
+              </div>
+              
+              <FeatureRow 
+                icon="chart-line"
+                title="Leaderboard"
+                description="Showcase your achievements and ranking"
+                freemiumIcon="user"
+                freemiumText="No Preferential Highlighting"
+                freemiumColor="#9AA0A6"
+                premiumIcon="crown"
+                premiumText="Highlighted as Premium Candidate"
+                strategicRationale="Showcases the value of Premium status by visually distinguishing subscribers on the leaderboard."
+              />
+
+              <FeatureRow 
+                icon="rocket"
+                title="TalentX"
+                description="Access to exclusive talent marketplace"
+                freemiumIcon="ban"
+                freemiumText="Not Available"
+                freemiumColor="#9AA0A6"
+                premiumIcon="unlock"
+                premiumText="Full Access"
+                strategicRationale="Provides exclusive access to a high-value platform for Premium users."
+              />
+
+              <FeatureRow 
+                icon="graduation-cap"
+                title="WAVE Scholarship Program"
+                description="Exclusive scholarship opportunities for top performers"
+                freemiumIcon="ban"
+                freemiumText="Not Available"
+                freemiumColor="#9AA0A6"
+                premiumIcon="money-bill-wave"
+                premiumText="Exclusive Access + ₹25,000 Scholarship Chance"
+                premiumColor="#28A745"
+                strategicRationale="A high-value, exclusive incentive for Premium users, with eligibility criteria ensuring only top candidates can apply, driving aspirational upgrades."
               />
             </div>
 
