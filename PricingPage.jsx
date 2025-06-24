@@ -116,6 +116,7 @@ const FeatureRow = ({
     transition: 'all 0.2s ease',
     position: 'relative'
   }}
+  className="feature-row"
   onMouseEnter={(e) => e.target.style.backgroundColor = '#fafbfc'}
   onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
   >
@@ -304,10 +305,195 @@ const PricingPage = () => {
             100% { transform: translate(-50%, -50%) scale(4); opacity: 0; }
           }
 
+          /* Mobile Responsive Styles */
           @media (max-width: 768px) {
             .transformation-grid {
               grid-template-columns: 1fr !important;
-              gap: 2rem !important;
+              gap: 1.5rem !important;
+            }
+            
+            .pricing-cards {
+              grid-template-columns: 1fr !important;
+              gap: 1.5rem !important;
+              padding: 0 1rem !important;
+            }
+            
+            .pricing-card {
+              padding: 2rem 1.5rem !important;
+              margin: 0 auto !important;
+              max-width: 400px !important;
+            }
+            
+            .premium-card.featured {
+              transform: none !important;
+            }
+            
+            .premium-card.featured:hover {
+              transform: translateY(-4px) !important;
+            }
+            
+            .section-title {
+              font-size: 2.25rem !important;
+              line-height: 1.2 !important;
+            }
+            
+            .container {
+              padding: 0 1rem !important;
+            }
+          }
+          
+          @media (max-width: 480px) {
+            .pricing-cards {
+              padding: 0 0.5rem !important;
+            }
+            
+            .pricing-card {
+              padding: 1.5rem 1rem !important;
+            }
+            
+            .section-title {
+              font-size: 1.875rem !important;
+            }
+            
+            .price {
+              font-size: 2.5rem !important;
+            }
+            
+            .container {
+              padding: 0 0.5rem !important;
+            }
+          }
+          
+          /* Feature Comparison Table Mobile Styles */
+          @media (max-width: 768px) {
+            .feature-row {
+              grid-template-columns: 1fr !important;
+              gap: 1rem !important;
+              padding: 1rem 0.5rem !important;
+              text-align: left !important;
+            }
+            
+            .feature-row > div:first-child {
+              margin-bottom: 1rem !important;
+              padding-bottom: 1rem !important;
+              border-bottom: 1px solid #f1f3f4 !important;
+            }
+            
+            .feature-row > div:nth-child(2),
+            .feature-row > div:nth-child(3) {
+              display: flex !important;
+              justify-content: space-between !important;
+              align-items: center !important;
+              padding: 0.75rem 1rem !important;
+              margin: 0.5rem 0 !important;
+              border-radius: 8px !important;
+              background: #f8f9fa !important;
+            }
+            
+            .feature-row > div:nth-child(3) {
+              background: rgba(122, 33, 135, 0.05) !important;
+              border: 1px solid rgba(122, 33, 135, 0.1) !important;
+            }
+            
+            /* Mobile sticky headers adjustment */
+            [data-comparison-section] > div:first-child {
+              position: relative !important;
+              top: 0 !important;
+              background: white !important;
+              padding: 1rem !important;
+              margin-bottom: 1rem !important;
+              border-radius: 8px !important;
+              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+            }
+            
+            [data-section-id] > div:first-child {
+              position: relative !important;
+              top: 0 !important;
+              background: white !important;
+              margin-bottom: 1rem !important;
+              border-radius: 8px !important;
+              box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
+            }
+          }
+          
+          /* Mobile testimonials improvements */
+          @media (max-width: 768px) {
+            .testimonials-section {
+              padding: 3rem 0 !important;
+            }
+            
+            .testimonials-section h2 {
+              font-size: 1.75rem !important;
+              line-height: 1.3 !important;
+            }
+            
+            .testimonials-section p {
+              font-size: 1rem !important;
+            }
+          }
+          
+          /* Additional mobile improvements */
+          @media (max-width: 768px) {
+            .pricing-header {
+              margin-bottom: 2rem !important;
+            }
+            
+            .section-subtitle {
+              font-size: 1rem !important;
+              margin-bottom: 2rem !important;
+            }
+            
+            /* Mobile billing toggle */
+            .pricing-header > div:nth-child(3) {
+              margin-bottom: 1.5rem !important;
+            }
+            
+            .pricing-header > div:nth-child(3) > div {
+              flex-direction: column !important;
+              gap: 0.5rem !important;
+              width: 100% !important;
+              max-width: 300px !important;
+              margin: 0 auto !important;
+            }
+            
+            .pricing-header > div:nth-child(3) > div > button {
+              width: 100% !important;
+              margin: 0 !important;
+            }
+            
+            .pricing-header > div:nth-child(3) > div > div:last-child {
+              position: static !important;
+              transform: none !important;
+              width: 100% !important;
+              height: 44px !important;
+              background: transparent !important;
+              box-shadow: none !important;
+            }
+            
+            /* Mobile CTA sections */
+            .cta-button {
+              font-size: 1rem !important;
+              padding: 0.875rem 1.5rem !important;
+            }
+            
+            /* Mobile FAQ adjustments */
+            .faq-section {
+              padding: 3rem 0 !important;
+            }
+          }
+          
+          @media (max-width: 480px) {
+            .section-subtitle {
+              font-size: 0.95rem !important;
+            }
+            
+            .pricing-header > div:nth-child(3) > div {
+              max-width: 280px !important;
+            }
+            
+            .popular-badge {
+              font-size: 0.8125rem !important;
+              padding: 0.375rem 1rem !important;
             }
           }
 
@@ -573,7 +759,7 @@ const PricingPage = () => {
                   borderRadius: '50%'
                 }}
               />
-              <span>Now Launching Premium Subscriptions</span>
+              <span>Early Bird Discount Available</span>
             </div>
             
             <h2 className="section-title">Choose Your <AuroraText>Premium</AuroraText> Plan</h2>
@@ -837,7 +1023,7 @@ const PricingPage = () => {
               <div className="trial-note" style={{ textAlign: 'center' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
                   <i className="fas fa-shield-alt" style={{ color: '#28A745', fontSize: '0.875rem' }}></i>
-                  <span>7-day money back guarantee</span>
+                  <span>Money back guarantee</span>
                 </div>
               </div>
               
@@ -1290,7 +1476,7 @@ const PricingPage = () => {
                 freemiumText="-"
                 freemiumColor="#9AA0A6"
                 premiumIcon="shield-check"
-                premiumText="7-Day Money Back Guarantee"
+                premiumText="Money Back Guarantee"
                 premiumColor="#28A745"
                 strategicRationale="An extended trial period that instills confidence and aims to increase conversion rates after users experience the full Premium benefits."
               />
@@ -1620,7 +1806,7 @@ const PricingPage = () => {
               }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   <i className="fas fa-shield-alt" style={{ color: '#FFD700' }} />
-                  <span>7-day guarantee</span>
+                  <span>Money back guarantee</span>
                 </div>
               </div>
             </div>
@@ -1629,7 +1815,7 @@ const PricingPage = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section style={{
+      <section className="testimonials-section" style={{
         background: '#f8f9fa',
         padding: '4rem 0',
         position: 'relative',
@@ -1643,7 +1829,7 @@ const PricingPage = () => {
               color: '#202124',
               marginBottom: '1rem'
             }}>
-              Join 50,000+ Professionals Who Transformed Their Careers
+              Join 10,000+ NCET Program Graduates Who Advanced Their Careers
             </h2>
             <p style={{
               fontSize: '1.1rem',
@@ -1651,7 +1837,7 @@ const PricingPage = () => {
               maxWidth: '600px',
               margin: '0 auto'
             }}>
-              See how premium members are landing dream jobs faster
+              Real stories from NCET training programs and career transformations
             </p>
           </div>
           
@@ -1678,46 +1864,46 @@ const PricingPage = () => {
             <Marquee pauseOnHover className="[--duration:60s]">
               {[
                 {
-                  name: "Priya Sharma",
-                  role: "Software Engineer at Google",
-                  content: "NCET Plus program helped me crack Google's interview. The premium mock tests and mentor guidance were game-changers!",
-                  rating: 5,
-                  avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
-                },
-                {
-                  name: "Rahul Verma",
-                  role: "Data Scientist at Microsoft",
-                  content: "From 2 job rejections to 5 offers! Premium career roadmap showed me exactly what skills I was missing.",
+                  name: "Hitin Sharma",
+                  role: "Data Analytics Professional",
+                  content: "NCET Data Analytics training provided an incredible platform for hands-on learning and skill-building. The Live Training Program was exceptional!",
                   rating: 5,
                   avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
                 },
                 {
-                  name: "Anita Desai",
-                  role: "Product Manager at Amazon",
-                  content: "The unlimited job applications feature helped me apply to 200+ positions. Got my dream PM role in 3 months!",
+                  name: "Nimisha Kulshrestha",
+                  role: "Data Analytics Graduate",
+                  content: "Successfully completed the 30-Hour Data Analytics Program! This journey equipped me with essential skills in data processing, visualization, and machine learning.",
                   rating: 5,
-                  avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
+                  avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
                 },
                 {
-                  name: "Vikram Singh",
-                  role: "DevOps Engineer at Flipkart",
-                  content: "Premium badge made me visible to recruiters I never thought would notice me. 4x more interview calls!",
+                  name: "Rajesh Kumar",
+                  role: "Business Analyst at TCS",
+                  content: "NCET's comprehensive training program transformed my understanding of data analytics. The hands-on projects prepared me for real-world challenges in my new role.",
                   rating: 5,
                   avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
                 },
                 {
-                  name: "Sneha Patel",
-                  role: "UX Designer at Zomato",
-                  content: "Weekly mentor calls with industry experts gave me insider tips that no course teaches. Worth every rupee!",
+                  name: "Priya Mehta",
+                  role: "Machine Learning Engineer",
+                  content: "The NCET Plus program's live training sessions and expert mentorship helped me transition from traditional software development to ML engineering successfully.",
                   rating: 5,
-                  avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face"
+                  avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
                 },
                 {
-                  name: "Arjun Nair",
-                  role: "Full Stack Developer at Paytm",
-                  content: "5 NCET attempts helped me improve from 60% to 95%. Finally got noticed by top-tier companies!",
+                  name: "Amit Patel",
+                  role: "Data Scientist at Infosys",
+                  content: "The practical approach of NCET training with real industry datasets made all the difference. I could immediately apply what I learned in my current position.",
                   rating: 5,
                   avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face"
+                },
+                {
+                  name: "Sneha Reddy",
+                  role: "Analytics Consultant",
+                  content: "NCET's career-focused training approach and industry connections helped me land my dream role. The program's emphasis on practical skills sets it apart from other courses.",
+                  rating: 5,
+                  avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face"
                 }
               ].map((testimonial, index) => (
                 <div key={index} style={{
@@ -1833,7 +2019,7 @@ const PricingPage = () => {
               marginBottom: '0.75rem',
               lineHeight: '1.2'
             }}>
-              Your Competition Isn't Waiting. Why Are You?
+              Your Peers Aren't Waiting. Why Are You?
             </h2>
             
             <p style={{
@@ -1866,7 +2052,7 @@ const PricingPage = () => {
               }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   <i className="fas fa-shield-alt" style={{ color: '#FFD700' }} />
-                  <span>7-day guarantee</span>
+                  <span>Money back guarantee</span>
                 </div>
               </div>
             </div>
@@ -1909,8 +2095,12 @@ const PricingPage = () => {
               answer: "If your Premium subscription expires, you'll lose access to premium courses and certificates. However, any free modules within courses will remain accessible. To regain full access, simply renew your Premium subscription and you'll immediately get back all your previous progress and materials."
             },
             {
-              question: "How does the 7-day money-back guarantee work?",
-              answer: "We offer a 7-day money-back guarantee from the date of purchase. If you're not completely satisfied with Premium access, contact our support team within 7 days for a full refund. This gives you time to explore all premium features risk-free."
+              question: "How does the money back guarantee work?",
+              answer: "We offer a comprehensive money-back guarantee from the date of purchase. If you're not completely satisfied with Premium access, contact our support team within the guarantee period for a full refund. This gives you time to explore all premium features risk-free."
+            },
+            {
+              question: "How does the money back guarantee work?",
+              answer: "Our money back guarantee ensures you can try Premium risk-free. If you're not satisfied with your Premium experience, simply contact our support team within the guarantee period for a full refund. No questions asked - we want you to be completely confident in your upgrade decision. The guarantee covers all Premium features including unlimited job applications, NCET Plus access, mentor calls, and advanced analytics."
             },
             {
               question: "What's the difference between monthly and annual plans?",
@@ -2007,7 +2197,7 @@ const PricingPage = () => {
                   marginBottom: '1rem',
                   textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'
                 }}>
-                  While you're thinking about it, your competition is already getting ahead with Premium.
+                  While you're thinking about it, your peers are already getting ahead with Premium.
                 </p>
                 
                 <p style={{
@@ -2070,7 +2260,7 @@ const PricingPage = () => {
                   color: 'rgba(255, 255, 255, 0.8)',
                   marginBottom: '1.5rem'
                 }}>
-                  <span><strong style={{ color: 'white' }}>7-day money back guarantee</strong></span>
+                  <span><strong style={{ color: 'white' }}>Money back guarantee</strong></span>
                 </div>
                 
                 {/* CTA Contact Support */}
