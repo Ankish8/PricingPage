@@ -759,7 +759,7 @@ const PricingPage = () => {
                   borderRadius: '50%'
                 }}
               />
-              <span>Early Bird Discount Available</span>
+              <span>Special Launch Pricing</span>
             </div>
             
             <h2 className="section-title">Choose Your <AuroraText>Premium</AuroraText> Plan</h2>
@@ -1062,6 +1062,7 @@ const PricingPage = () => {
           </div>
         </div>
       </section>
+
 
       {/* Feature Comparison Section */}
       <section style={{ 
@@ -1868,42 +1869,42 @@ const PricingPage = () => {
                   role: "Data Analytics Professional",
                   content: "NCET Data Analytics training provided an incredible platform for hands-on learning and skill-building. The Live Training Program was exceptional!",
                   rating: 5,
-                  avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
+                  avatar: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=150&h=150&fit=crop&crop=face"
                 },
                 {
                   name: "Nimisha Kulshrestha",
                   role: "Data Analytics Graduate",
                   content: "Successfully completed the 30-Hour Data Analytics Program! This journey equipped me with essential skills in data processing, visualization, and machine learning.",
                   rating: 5,
-                  avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
+                  avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=face"
                 },
                 {
                   name: "Rajesh Kumar",
                   role: "Business Analyst at TCS",
                   content: "NCET's comprehensive training program transformed my understanding of data analytics. The hands-on projects prepared me for real-world challenges in my new role.",
                   rating: 5,
-                  avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
+                  avatar: "https://images.unsplash.com/photo-1566492031773-4f4e44671d66?w=150&h=150&fit=crop&crop=face"
                 },
                 {
                   name: "Priya Mehta",
                   role: "Machine Learning Engineer",
                   content: "The NCET Plus program's live training sessions and expert mentorship helped me transition from traditional software development to ML engineering successfully.",
                   rating: 5,
-                  avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
+                  avatar: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=150&h=150&fit=crop&crop=face"
                 },
                 {
                   name: "Amit Patel",
                   role: "Data Scientist at Infosys",
                   content: "The practical approach of NCET training with real industry datasets made all the difference. I could immediately apply what I learned in my current position.",
                   rating: 5,
-                  avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face"
+                  avatar: "https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?w=150&h=150&fit=crop&crop=face"
                 },
                 {
                   name: "Sneha Reddy",
                   role: "Analytics Consultant",
                   content: "NCET's career-focused training approach and industry connections helped me land my dream role. The program's emphasis on practical skills sets it apart from other courses.",
                   rating: 5,
-                  avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face"
+                  avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face"
                 }
               ].map((testimonial, index) => (
                 <div key={index} style={{
@@ -2260,7 +2261,10 @@ const PricingPage = () => {
                   color: 'rgba(255, 255, 255, 0.8)',
                   marginBottom: '1.5rem'
                 }}>
-                  <span><strong style={{ color: 'white' }}>Money back guarantee</strong></span>
+                  <span>
+                    <i className="fas fa-shield-alt" style={{ color: 'white', marginRight: '0.5rem' }}></i>
+                    <strong style={{ color: 'white' }}>Money back guarantee</strong>
+                  </span>
                 </div>
                 
                 {/* CTA Contact Support */}
