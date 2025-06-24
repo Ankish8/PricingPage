@@ -205,7 +205,7 @@ const PricingPage = () => {
   
   const priceData = {
     monthly: { price: '₹2,000', period: '/month', savings: 0 },
-    halfyearly: { price: '₹20,000', period: '/6 months', savings: 4000 },
+    halfyearly: { price: '₹10,000', period: '/6 months', savings: 4000 },
     annual: { price: '₹15,000', period: '/year', savings: 9000 }
   };
 
@@ -226,7 +226,7 @@ const PricingPage = () => {
   // Format badge display
   const formatBadgeDisplay = (number, cycle) => {
     if (cycle === 'monthly') {
-      return `₹${number.toLocaleString('en-IN')} annually`;
+      return `₹${number.toLocaleString('en-IN')} total annual cost`;
     }
     return `₹${number.toLocaleString('en-IN')} savings`;
   };
@@ -955,7 +955,7 @@ const PricingPage = () => {
                       fontWeight: '500',
                       fontStyle: 'italic'
                     }}>
-                      Only ₹{selectedCycle === 'annual' ? '1,250' : '3,333'}/month
+Only ₹{selectedCycle === 'annual' ? '1,250' : '1,667'}/month
                     </span>
                   </div>
                 )}
@@ -1023,7 +1023,7 @@ const PricingPage = () => {
               <div className="trial-note" style={{ textAlign: 'center' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
                   <i className="fas fa-shield-alt" style={{ color: '#28A745', fontSize: '0.875rem' }}></i>
-                  <span>Money back guarantee</span>
+                  <span>7-day money back guarantee*</span>
                 </div>
               </div>
               
@@ -1151,12 +1151,11 @@ const PricingPage = () => {
               <h4 style={{ 
                 fontSize: '1rem', 
                 fontWeight: '700', 
-                color: '#7A2187', 
                 margin: 0, 
                 textTransform: 'uppercase', 
                 letterSpacing: '0.5px'
               }}>
-                Premium
+                <AuroraText>Premium</AuroraText>
               </h4>
             </div>
           </div>
@@ -1199,8 +1198,8 @@ const PricingPage = () => {
                 freemiumIcon="user"
                 freemiumText="Basic Profile Creation"
                 freemiumColor="#9AA0A6"
-                premiumIcon="crown"
-                premiumText="Enhanced + Video Resume (For all Job roles added in career aspirants) + AI Optimization"
+                premiumIcon="brain"
+                premiumText="Enhanced + Video Resume + AI Optimization"
                 strategicRationale="The basic offering serves as an entry point, while Premium significantly enhances career impact through advanced features like video resumes and AI optimization."
               />
 
@@ -1225,7 +1224,7 @@ const PricingPage = () => {
                 freemiumText="Not Available"
                 freemiumColor="#9AA0A6"
                 premiumIcon="star"
-                premiumText="Full Access (Aligned with Leaderboard)"
+                premiumText="Full Access"
                 strategicRationale="The outcome of career advancement creates aspiration and urgency, as Premium users gain enhanced visibility to potential employers."
               />
 
@@ -1426,7 +1425,7 @@ const PricingPage = () => {
                 freemiumText="Not Available"
                 freemiumColor="#9AA0A6"
                 premiumIcon="video"
-                premiumText="Available - Weekly 1 Free Call Available (Similar to Expert Career Counselling)"
+                premiumText="Available - Weekly 1 Free Call Available"
                 strategicRationale="This feature serves as a critical differentiator and a high-value incentive for the Premium tier. While Freemium users can engage with projects independently, Premium users gain access to personalized, expert human guidance."
               />
             </div>
@@ -1807,7 +1806,7 @@ const PricingPage = () => {
               }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   <i className="fas fa-shield-alt" style={{ color: '#FFD700' }} />
-                  <span>Money back guarantee</span>
+                  <span>7-day money back guarantee*</span>
                 </div>
               </div>
             </div>
@@ -2053,7 +2052,7 @@ const PricingPage = () => {
               }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   <i className="fas fa-shield-alt" style={{ color: '#FFD700' }} />
-                  <span>Money back guarantee</span>
+                  <span>7-day money back guarantee*</span>
                 </div>
               </div>
             </div>
@@ -2105,7 +2104,7 @@ const PricingPage = () => {
             },
             {
               question: "What's the difference between monthly and annual plans?",
-              answer: "The annual plan offers significant savings - you pay ₹15,000 instead of ₹24,000 (₹9,000 savings). The 6-month plan costs ₹20,000, saving you ₹4,000. All plans include the same premium features, but longer commitments offer better value."
+              answer: "The annual plan offers significant savings - you pay ₹15,000 instead of ₹24,000 (₹9,000 savings). The 6-month plan costs ₹10,000, saving you ₹4,000. All plans include the same premium features, but longer commitments offer better value."
             },
             {
               question: "How many NCET attempts do I get with Premium?",
@@ -2263,7 +2262,7 @@ const PricingPage = () => {
                 }}>
                   <span>
                     <i className="fas fa-shield-alt" style={{ color: 'white', marginRight: '0.5rem' }}></i>
-                    <strong style={{ color: 'white' }}>Money back guarantee</strong>
+                    <strong style={{ color: 'white' }}>7-day money back guarantee*</strong>
                   </span>
                 </div>
                 
