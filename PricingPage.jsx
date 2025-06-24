@@ -202,6 +202,16 @@ const useAnimatedNumber = (initialValue, duration = 700) => {
 
 const PricingPage = () => {
   const [selectedCycle, setSelectedCycle] = useState('annual');
+  const [showCheckoutModal, setShowCheckoutModal] = useState(false);
+  const [userPreviousPurchases, setUserPreviousPurchases] = useState(0); // Amount user has already spent
+  
+  // Demo: Simulate different user scenarios (remove in production)
+  useEffect(() => {
+    // Simulate 30% chance user has previous purchases between ₹200-800
+    if (Math.random() > 0.7) {
+      setUserPreviousPurchases(Math.floor(Math.random() * 600) + 200);
+    }
+  }, []);
   
   const priceData = {
     monthly: { price: '₹2,000', period: '/month', savings: 0 },
@@ -238,6 +248,396 @@ const PricingPage = () => {
     animateSavings(newSavings);
     animateBadgeNumber(newBadgeValue);
     setSelectedCycle(newCycle);
+  };
+
+  // Premium Checkout Modal Component
+  const PremiumCheckoutModal = () => {
+    if (!showCheckoutModal) return null;
+
+    const selectedPrice = parseInt(priceData[selectedCycle].price.replace(/[₹,]/g, ''));
+    const earlyBirdDiscount = selectedCycle === 'annual' ? 3000 : selectedCycle === 'halfyearly' ? 1000 : 0;
+    const totalDiscount = earlyBirdDiscount + userPreviousPurchases;
+    const finalPrice = selectedPrice - totalDiscount;
+    const originalPrice = selectedCycle === 'annual' ? 18000 : selectedCycle === 'halfyearly' ? 11000 : 2000;
+
+    return (
+      <div 
+        className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+        style={{ backdropFilter: 'blur(8px)' }}
+        onClick={() => setShowCheckoutModal(false)}
+      >
+        <MagicCard 
+          className="w-full max-w-4xl max-h-[90vh] overflow-y-auto"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <BorderBeam size={60} duration={8} delay={0} />
+          <div style={{
+            background: 'linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)',
+            borderRadius: '24px',
+            padding: '2rem',
+            position: 'relative'
+          }}>
+            
+            {/* Close Button */}
+            <button
+              onClick={() => setShowCheckoutModal(false)}
+              style={{
+                position: 'absolute',
+                top: '1rem',
+                right: '1rem',
+                background: 'transparent',
+                border: 'none',
+                fontSize: '1.5rem',
+                color: '#5F6368',
+                cursor: 'pointer',
+                zIndex: 10
+              }}
+            >
+              ×
+            </button>
+
+            {/* Header */}
+            <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+              <div style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                background: 'rgba(122, 33, 135, 0.1)',
+                padding: '0.5rem 1rem',
+                borderRadius: '20px',
+                marginBottom: '1rem',
+                fontSize: '0.875rem',
+                color: '#7A2187',
+                fontWeight: '500'
+              }}>
+                <i className="fas fa-star" style={{ fontSize: '0.75rem' }}></i>
+                Step 1 of 2: Confirm Your Plan
+              </div>
+              
+              <h2 style={{
+                fontSize: '2rem',
+                fontWeight: '700',
+                color: '#202124',
+                margin: '0 0 0.5rem 0'
+              }}>
+                Secure Your <AuroraText>Premium</AuroraText> Access
+              </h2>
+              
+              <p style={{
+                color: '#5F6368',
+                fontSize: '1.1rem',
+                margin: 0
+              }}>
+                {userPreviousPurchases > 0 
+                  ? "We've applied your previous purchases as credit to your account"
+                  : "Join thousands of professionals accelerating their careers"
+                }
+              </p>
+            </div>
+
+            {/* Two Column Layout */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gap: '2rem',
+              alignItems: 'start'
+            }}>
+              
+              {/* Left Column - Pricing Breakdown */}
+              <div style={{
+                background: 'white',
+                borderRadius: '16px',
+                padding: '1.5rem',
+                border: '1px solid #e8eaed',
+                boxShadow: '0 2px 12px rgba(0, 0, 0, 0.08)'
+              }}>
+                <h3 style={{
+                  fontSize: '1.25rem',
+                  fontWeight: '600',
+                  color: '#202124',
+                  marginBottom: '1.5rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem'
+                }}>
+                  <i className="fas fa-receipt" style={{ color: '#7A2187', fontSize: '1rem' }}></i>
+                  Pricing Breakdown
+                </h3>
+
+                {/* Plan Selection */}
+                <div style={{ marginBottom: '1.5rem' }}>
+                  <div style={{
+                    display: 'flex',
+                    gap: '0.5rem',
+                    background: '#f8f9fa',
+                    padding: '0.25rem',
+                    borderRadius: '8px'
+                  }}>
+                    {Object.entries(priceData).map(([cycle, data]) => (
+                      <button
+                        key={cycle}
+                        onClick={() => setSelectedCycle(cycle)}
+                        style={{
+                          flex: 1,
+                          padding: '0.75rem 0.5rem',
+                          borderRadius: '6px',
+                          border: 'none',
+                          background: selectedCycle === cycle ? '#7A2187' : 'transparent',
+                          color: selectedCycle === cycle ? 'white' : '#5F6368',
+                          fontSize: '0.875rem',
+                          fontWeight: '500',
+                          cursor: 'pointer',
+                          transition: 'all 0.2s ease'
+                        }}
+                      >
+                        {cycle === 'halfyearly' ? '6 Months' : cycle.charAt(0).toUpperCase() + cycle.slice(1)}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Price Breakdown */}
+                <div style={{ marginBottom: '1.5rem' }}>
+                  {/* Original Price */}
+                  <div style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    marginBottom: '0.5rem'
+                  }}>
+                    <span style={{ color: '#5F6368' }}>
+                      {selectedCycle === 'annual' ? 'Annual' : selectedCycle === 'halfyearly' ? '6-Month' : 'Monthly'} Plan
+                    </span>
+                    <span style={{
+                      color: '#9AA0A6',
+                      textDecoration: 'line-through',
+                      fontSize: '0.875rem'
+                    }}>
+                      ₹{originalPrice.toLocaleString('en-IN')}
+                    </span>
+                  </div>
+
+                  {/* Early Bird Discount */}
+                  {earlyBirdDiscount > 0 && (
+                    <div style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      marginBottom: '0.5rem',
+                      color: '#28A745'
+                    }}>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <i className="fas fa-gift" style={{ fontSize: '0.875rem' }}></i>
+                        Early Bird Discount
+                      </span>
+                      <span>-₹{earlyBirdDiscount.toLocaleString('en-IN')}</span>
+                    </div>
+                  )}
+
+                  {/* Previous Purchase Credit */}
+                  {userPreviousPurchases > 0 && (
+                    <div style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      marginBottom: '0.5rem',
+                      color: '#28A745'
+                    }}>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <i className="fas fa-credit-card" style={{ fontSize: '0.875rem' }}></i>
+                        Account Credit Applied
+                      </span>
+                      <span>-₹{userPreviousPurchases.toLocaleString('en-IN')}</span>
+                    </div>
+                  )}
+
+                  {/* Divider */}
+                  <div style={{
+                    height: '1px',
+                    background: '#e8eaed',
+                    margin: '1rem 0'
+                  }}></div>
+
+                  {/* Final Price */}
+                  <div style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    marginBottom: '1rem'
+                  }}>
+                    <span style={{
+                      fontSize: '1.125rem',
+                      fontWeight: '600',
+                      color: '#202124'
+                    }}>
+                      Total Amount
+                    </span>
+                    <div style={{ textAlign: 'right' }}>
+                      <div style={{
+                        fontSize: '1.5rem',
+                        fontWeight: '700',
+                        color: '#7A2187'
+                      }}>
+                        <NumberTicker value={finalPrice} />
+                      </div>
+                      {selectedCycle !== 'monthly' && (
+                        <div style={{
+                          fontSize: '0.875rem',
+                          color: '#5F6368',
+                          fontStyle: 'italic'
+                        }}>
+                          Only ₹{Math.round(finalPrice / (selectedCycle === 'annual' ? 12 : 6)).toLocaleString('en-IN')}/month
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Savings Highlight */}
+                  {totalDiscount > 0 && (
+                    <div style={{
+                      background: 'linear-gradient(135deg, #28A745, #20C997)',
+                      color: 'white',
+                      padding: '0.75rem',
+                      borderRadius: '8px',
+                      textAlign: 'center',
+                      fontSize: '0.875rem',
+                      fontWeight: '500'
+                    }}>
+                      🎉 You're saving ₹{totalDiscount.toLocaleString('en-IN')} today!
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Right Column - Benefits & Trust */}
+              <div style={{
+                background: 'white',
+                borderRadius: '16px',
+                padding: '1.5rem',
+                border: '1px solid #e8eaed',
+                boxShadow: '0 2px 12px rgba(0, 0, 0, 0.08)'
+              }}>
+                <h3 style={{
+                  fontSize: '1.25rem',
+                  fontWeight: '600',
+                  color: '#202124',
+                  marginBottom: '1.5rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem'
+                }}>
+                  <i className="fas fa-crown" style={{ color: '#7A2187', fontSize: '1rem' }}></i>
+                  Your Premium Access Includes
+                </h3>
+
+                {/* Key Benefits */}
+                <div style={{ marginBottom: '1.5rem' }}>
+                  {[
+                    { icon: 'infinity', text: 'Unlimited job applications & priority matching' },
+                    { icon: 'video', text: 'Weekly 1-on-1 mentor calls with industry experts' },
+                    { icon: 'brain', text: 'Full AI-powered career roadmap & optimization' },
+                    { icon: 'certificate', text: 'Complete course access with certificates' },
+                    { icon: 'star', text: 'Premium badge & enhanced corporate visibility' }
+                  ].map((benefit, index) => (
+                    <div key={index} style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.75rem',
+                      marginBottom: '0.75rem',
+                      padding: '0.5rem',
+                      borderRadius: '8px',
+                      background: 'rgba(122, 33, 135, 0.05)'
+                    }}>
+                      <i className={`fas fa-${benefit.icon}`} style={{
+                        color: '#7A2187',
+                        fontSize: '1rem',
+                        minWidth: '1rem'
+                      }}></i>
+                      <span style={{
+                        color: '#202124',
+                        fontSize: '0.875rem',
+                        lineHeight: '1.4'
+                      }}>
+                        {benefit.text}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Social Proof */}
+                <div style={{
+                  background: '#f8f9fa',
+                  padding: '1rem',
+                  borderRadius: '8px',
+                  marginBottom: '1.5rem',
+                  textAlign: 'center'
+                }}>
+                  <div style={{
+                    fontSize: '0.875rem',
+                    color: '#5F6368',
+                    marginBottom: '0.25rem'
+                  }}>
+                    Join 10,000+ professionals who upgraded their careers
+                  </div>
+                  <div style={{
+                    fontSize: '0.75rem',
+                    color: '#9AA0A6'
+                  }}>
+                    ⭐⭐⭐⭐⭐ Average 4x higher recruiter response rate
+                  </div>
+                </div>
+
+                {/* Trust Signals */}
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '1rem',
+                  fontSize: '0.875rem',
+                  color: '#5F6368',
+                  marginBottom: '1rem'
+                }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+                    <i className="fas fa-shield-alt" style={{ color: '#28A745' }}></i>
+                    <span>7-day money back guarantee*</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* CTA Section */}
+            <div style={{
+              textAlign: 'center',
+              marginTop: '2rem',
+              paddingTop: '1.5rem',
+              borderTop: '1px solid #e8eaed'
+            }}>
+              <RainbowButton
+                className="w-full max-w-md text-lg font-semibold"
+                style={{ 
+                  padding: '1rem 2rem', 
+                  borderRadius: '12px',
+                  background: '#7A2187',
+                  color: 'white',
+                  marginBottom: '1rem'
+                }}
+              >
+                <i className="fas fa-lock" style={{ marginRight: '0.5rem' }}></i>
+                Secure My Premium Access
+              </RainbowButton>
+              
+              <p style={{
+                fontSize: '0.8125rem',
+                color: '#5F6368',
+                margin: 0
+              }}>
+                Secure checkout • Cancel anytime • Instant access
+              </p>
+            </div>
+          </div>
+        </MagicCard>
+      </div>
+    );
   };
 
   return (
@@ -1017,6 +1417,7 @@ Only ₹{selectedCycle === 'annual' ? '1,250' : '1,667'}/month
                   background: '#7A2187',
                   color: 'white'
                 }}
+                onClick={() => setShowCheckoutModal(true)}
               >
                 Get Premium Now
               </RainbowButton>
@@ -1791,7 +2192,7 @@ Only ₹{selectedCycle === 'annual' ? '1,250' : '1,667'}/month
               alignItems: 'center',
               gap: '1.5rem'
             }}>
-              <RainbowButton>
+              <RainbowButton onClick={() => setShowCheckoutModal(true)}>
                 Get Premium Now
               </RainbowButton>
               
@@ -2037,7 +2438,7 @@ Only ₹{selectedCycle === 'annual' ? '1,250' : '1,667'}/month
               alignItems: 'center',
               gap: '1rem'
             }}>
-              <RainbowButton>
+              <RainbowButton onClick={() => setShowCheckoutModal(true)}>
                 Get Premium Now
               </RainbowButton>
               
@@ -2308,6 +2709,8 @@ Only ₹{selectedCycle === 'annual' ? '1,250' : '1,667'}/month
         </div>
       </section>
 
+      {/* Premium Checkout Modal */}
+      <PremiumCheckoutModal />
     </div>
   );
 };
