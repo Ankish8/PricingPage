@@ -10,9 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@lordicon/react": "^1.11.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cobe": "^0.6.4",
+    "lottie-web": "^5.13.0",
     "lucide-react": "^0.518.0",
     "motion": "^12.18.1",
     "react": "^18.2.0",
