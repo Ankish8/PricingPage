@@ -255,7 +255,7 @@ const PricingPage = () => {
     if (!showCheckoutModal) return null;
 
     const selectedPrice = parseInt(priceData[selectedCycle].price.replace(/[₹,]/g, ''));
-    const earlyBirdDiscount = selectedCycle === 'annual' ? 3000 : selectedCycle === 'halfyearly' ? 1000 : 0;
+    const earlyBirdDiscount = 0;
     const totalDiscount = earlyBirdDiscount + userPreviousPurchases;
     const finalPrice = selectedPrice - totalDiscount;
     const originalPrice = selectedCycle === 'annual' ? 18000 : selectedCycle === 'halfyearly' ? 11000 : 2000;
@@ -269,19 +269,23 @@ const PricingPage = () => {
     return (
       <div 
         className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
-        style={{ backdropFilter: 'blur(8px)' }}
+        style={{ 
+          backdropFilter: 'blur(12px)',
+          animation: 'modalFadeIn 0.3s ease-out'
+        }}
         onClick={() => setShowCheckoutModal(false)}
       >
         <div 
-          className="w-full max-w-lg"
+          className="w-full max-w-md"
           onClick={(e) => e.stopPropagation()}
           style={{
-            background: 'linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)',
-            borderRadius: '20px',
-            padding: '1.5rem',
+            background: 'linear-gradient(135deg, #ffffff 0%, #fafbfc 100%)',
+            borderRadius: '16px',
+            padding: '1.25rem',
             position: 'relative',
-            boxShadow: '0 20px 40px rgba(0, 0, 0, 0.15)',
-            border: '1px solid rgba(255, 255, 255, 0.2)'
+            boxShadow: '0 20px 40px rgba(0, 0, 0, 0.12)',
+            border: '1px solid rgba(122, 33, 135, 0.08)',
+            animation: 'modalSlideUp 0.3s ease-out'
           }}
         >
           {/* Close Button */}
@@ -289,74 +293,87 @@ const PricingPage = () => {
             onClick={() => setShowCheckoutModal(false)}
             style={{
               position: 'absolute',
-              top: '1rem',
-              right: '1rem',
+              top: '0.75rem',
+              right: '0.75rem',
               background: 'transparent',
               border: 'none',
-              fontSize: '1.5rem',
-              color: '#5F6368',
+              fontSize: '1.25rem',
+              color: '#9AA0A6',
               cursor: 'pointer',
-              zIndex: 10
+              zIndex: 10,
+              width: '28px',
+              height: '28px',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              transition: 'color 0.2s ease'
             }}
+            onMouseEnter={(e) => e.target.style.color = '#5F6368'}
+            onMouseLeave={(e) => e.target.style.color = '#9AA0A6'}
           >
             ×
           </button>
 
           {/* Header */}
-          <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+          <div style={{ 
+            textAlign: 'center', 
+            marginBottom: '1.25rem'
+          }}>
             <h2 style={{
               fontSize: '1.5rem',
               fontWeight: '700',
               color: '#202124',
-              margin: '0 0 0.5rem 0'
+              margin: '0 0 0.5rem 0',
+              letterSpacing: '-0.01em'
             }}>
               Get <AuroraText>Premium</AuroraText> Access
             </h2>
             
             <p style={{
               color: '#5F6368',
-              fontSize: '0.9rem',
-              margin: 0
+              fontSize: '0.95rem',
+              margin: 0,
+              lineHeight: '1.4'
             }}>
-              {userPreviousPurchases > 0 
-                ? "Previous course credits have been applied to your account"
-                : "Unlock unlimited access to advance your career"
-              }
+              Unlock unlimited access to advance your career
             </p>
           </div>
 
-          {/* Pricing Breakdown */}
+          {/* Pricing Section */}
           <div style={{
             background: 'white',
             borderRadius: '12px',
-            padding: '1.25rem',
+            padding: '1.125rem',
             border: '1px solid #e8eaed',
-            marginBottom: '1rem'
+            marginBottom: '0.875rem',
+            boxShadow: '0 1px 3px rgba(0, 0, 0, 0.04)'
           }}>
             <h3 style={{
-              fontSize: '1.1rem',
+              fontSize: '1.0625rem',
               fontWeight: '600',
               color: '#202124',
               marginBottom: '1rem',
               display: 'flex',
               alignItems: 'center',
-              gap: '0.5rem'
+              gap: '0.5rem',
+              letterSpacing: '-0.005em'
             }}>
-              <i className="fas fa-receipt" style={{ color: '#7A2187', fontSize: '0.9rem' }}></i>
-              Pricing Breakdown
+              <i className="fas fa-receipt" style={{ color: '#7A2187', fontSize: '0.9375rem' }}></i>
+              Pricing
             </h3>
 
             {/* Price Items */}
-            <div style={{ marginBottom: '1rem' }}>
+            <div style={{ fontSize: '0.875rem' }}>
               {/* Selected Plan */}
               <div style={{
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                marginBottom: '0.5rem'
+                marginBottom: '0.375rem'
               }}>
-                <span style={{ color: '#5F6368', fontSize: '0.9rem' }}>
-                  {selectedCycle === 'annual' ? 'Annual' : selectedCycle === 'halfyearly' ? '6-Month' : 'Monthly'} Premium Plan
+                <span style={{ color: '#5F6368' }}>
+                  {selectedCycle === 'annual' ? 'Annual' : selectedCycle === 'halfyearly' ? '6-Month' : 'Monthly'} Plan
                 </span>
                 <span style={{
                   color: '#9AA0A6',
@@ -367,22 +384,6 @@ const PricingPage = () => {
                 </span>
               </div>
 
-              {/* Early Bird Discount */}
-              {earlyBirdDiscount > 0 && (
-                <div style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  marginBottom: '0.5rem',
-                  color: '#28A745'
-                }}>
-                  <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.875rem' }}>
-                    <i className="fas fa-gift" style={{ fontSize: '0.75rem' }}></i>
-                    Early Bird Discount
-                  </span>
-                  <span style={{ fontSize: '0.875rem' }}>-₹{earlyBirdDiscount.toLocaleString('en-IN')}</span>
-                </div>
-              )}
 
               {/* Previous Course Credits */}
               {userPreviousPurchases > 0 && (
@@ -390,26 +391,27 @@ const PricingPage = () => {
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center',
-                  marginBottom: '0.5rem',
+                  marginBottom: '0.375rem',
                   color: '#28A745'
                 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <i className="fas fa-credit-card" style={{ fontSize: '0.75rem' }}></i>
-                    <span style={{ fontSize: '0.875rem' }}>
+                  <div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.375rem' }}>
+                      <i className="fas fa-credit-card" style={{ fontSize: '0.875rem' }}></i>
                       Course Credits
-                      {previousCourses.length > 0 && (
-                        <div style={{
-                          fontSize: '0.75rem',
-                          color: '#7A2187',
-                          fontWeight: '500',
-                          marginTop: '0.125rem'
-                        }}>
-                          {previousCourses.map(course => course.name).join(', ')}
-                        </div>
-                      )}
-                    </span>
+                    </div>
+                    {previousCourses.length > 0 && (
+                      <div style={{
+                        fontSize: '0.75rem',
+                        color: '#7A2187',
+                        fontWeight: '500',
+                        marginTop: '0.25rem',
+                        lineHeight: '1.3'
+                      }}>
+                        {previousCourses.map(course => course.name).join(', ')}
+                      </div>
+                    )}
                   </div>
-                  <span style={{ fontSize: '0.875rem' }}>-₹{userPreviousPurchases.toLocaleString('en-IN')}</span>
+                  <span>-₹{userPreviousPurchases.toLocaleString('en-IN')}</span>
                 </div>
               )}
 
@@ -417,7 +419,7 @@ const PricingPage = () => {
               <div style={{
                 height: '1px',
                 background: '#e8eaed',
-                margin: '0.75rem 0'
+                margin: '0.5rem 0'
               }}></div>
 
               {/* Total Amount */}
@@ -427,17 +429,18 @@ const PricingPage = () => {
                 alignItems: 'center'
               }}>
                 <span style={{
-                  fontSize: '1.1rem',
+                  fontSize: '1rem',
                   fontWeight: '600',
                   color: '#202124'
                 }}>
-                  Total Amount
+                  Total
                 </span>
                 <div style={{ textAlign: 'right' }}>
                   <div style={{
                     fontSize: '1.375rem',
                     fontWeight: '700',
-                    color: '#7A2187'
+                    color: '#7A2187',
+                    letterSpacing: '-0.02em'
                   }}>
                     ₹{finalPrice.toLocaleString('en-IN')}
                   </div>
@@ -447,7 +450,16 @@ const PricingPage = () => {
                       color: '#5F6368',
                       fontStyle: 'italic'
                     }}>
-                      Only ₹{Math.round(finalPrice / (selectedCycle === 'annual' ? 12 : 6)).toLocaleString('en-IN')}/month
+                      ₹{Math.round(finalPrice / (selectedCycle === 'annual' ? 12 : 6)).toLocaleString('en-IN')}/month
+                    </div>
+                  )}
+                  {totalDiscount > 0 && (
+                    <div style={{
+                      fontSize: '0.75rem',
+                      color: '#28A745',
+                      fontWeight: '500'
+                    }}>
+                      Saving ₹{totalDiscount.toLocaleString('en-IN')}
                     </div>
                   )}
                 </div>
@@ -455,43 +467,29 @@ const PricingPage = () => {
             </div>
           </div>
 
-          {/* Savings Badge */}
-          {totalDiscount > 0 && (
-            <div style={{
-              background: 'rgba(40, 167, 69, 0.1)',
-              color: '#28A745',
-              padding: '0.75rem',
-              borderRadius: '8px',
-              textAlign: 'center',
-              fontSize: '0.875rem',
-              fontWeight: '500',
-              border: '1px solid rgba(40, 167, 69, 0.2)',
-              marginBottom: '1rem'
-            }}>
-              🎉 You're saving ₹{totalDiscount.toLocaleString('en-IN')} today!
-            </div>
-          )}
-
           {/* Social Proof */}
           <div style={{
             background: '#f8f9fa',
-            padding: '0.875rem',
+            padding: '0.9375rem',
             borderRadius: '8px',
-            marginBottom: '1rem',
-            textAlign: 'center'
+            textAlign: 'center',
+            marginBottom: '1.125rem',
+            border: '1px solid rgba(248, 249, 250, 0.8)'
           }}>
             <div style={{
-              fontSize: '0.8rem',
+              fontSize: '0.875rem',
               color: '#5F6368',
-              marginBottom: '0.25rem'
+              marginBottom: '0.375rem',
+              lineHeight: '1.4',
+              fontWeight: '500'
             }}>
-              Join early adopters who are already transforming their careers
+              Join early adopters transforming their careers
             </div>
             <div style={{
-              fontSize: '0.7rem',
+              fontSize: '0.75rem',
               color: '#9AA0A6'
             }}>
-              ⭐⭐⭐⭐⭐ Be among the first to unlock Premium benefits
+              ⭐⭐⭐⭐⭐ Be among the first
             </div>
           </div>
 
@@ -514,25 +512,17 @@ const PricingPage = () => {
             alignItems: 'center',
             justifyContent: 'center',
             gap: '1rem',
-            fontSize: '0.8rem',
+            fontSize: '0.8125rem',
             color: '#5F6368',
-            marginBottom: '0.5rem'
+            marginBottom: '0.625rem',
+            fontWeight: '500'
           }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
-              <i className="fas fa-shield-alt" style={{ color: '#28A745' }}></i>
-              <span>7-day money back guarantee*</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.375rem' }}>
+              <i className="fas fa-shield-alt" style={{ color: '#28A745', fontSize: '0.8125rem' }}></i>
+              <span>7-day money back guarantee</span>
             </div>
           </div>
 
-          {/* Footer */}
-          <p style={{
-            fontSize: '0.75rem',
-            color: '#5F6368',
-            margin: 0,
-            textAlign: 'center'
-          }}>
-            Secure checkout • Cancel anytime • Instant access
-          </p>
         </div>
       </div>
     );
@@ -596,6 +586,22 @@ const PricingPage = () => {
           @keyframes gentle-pulse {
             0%, 100% { opacity: 1; transform: scale(1); }
             50% { opacity: 0.85; transform: scale(1.02); }
+          }
+
+          @keyframes modalFadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+          }
+
+          @keyframes modalSlideUp {
+            0% { 
+              opacity: 0; 
+              transform: translateY(10px); 
+            }
+            100% { 
+              opacity: 1; 
+              transform: translateY(0); 
+            }
           }
 
           @keyframes ripple {
