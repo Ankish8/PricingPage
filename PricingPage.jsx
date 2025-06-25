@@ -320,6 +320,26 @@ const PricingPage = () => {
             textAlign: 'center', 
             marginBottom: '1.25rem'
           }}>
+            {/* Coupon Applied Badge */}
+            {userPreviousPurchases > 0 && (
+              <div style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.375rem',
+                background: 'linear-gradient(135deg, #28A745 0%, #34ce57 100%)',
+                color: 'white',
+                padding: '0.375rem 0.75rem',
+                borderRadius: '20px',
+                fontSize: '0.75rem',
+                fontWeight: '600',
+                marginBottom: '0.75rem',
+                boxShadow: '0 2px 8px rgba(40, 167, 69, 0.3)'
+              }}>
+                <i className="fas fa-check-circle" style={{ fontSize: '0.75rem' }}></i>
+                Coupon Applied - Save ₹{userPreviousPurchases.toLocaleString('en-IN')}
+              </div>
+            )}
+            
             <h2 style={{
               fontSize: '1.5rem',
               fontWeight: '700',
@@ -385,33 +405,68 @@ const PricingPage = () => {
               </div>
 
 
-              {/* Previous Course Credits */}
+              {/* Pre-Applied Coupon / Course Credits */}
               {userPreviousPurchases > 0 && (
                 <div style={{
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center',
                   marginBottom: '0.375rem',
-                  color: '#28A745'
+                  padding: '0.625rem',
+                  background: 'linear-gradient(135deg, #e8f5e8 0%, #f0f9f0 100%)',
+                  borderRadius: '8px',
+                  border: '1px solid #28A745',
+                  borderStyle: 'dashed'
                 }}>
                   <div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.375rem' }}>
-                      <i className="fas fa-credit-card" style={{ fontSize: '0.875rem' }}></i>
-                      Course Credits
+                    <div style={{ 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      gap: '0.375rem',
+                      color: '#28A745',
+                      fontWeight: '600'
+                    }}>
+                      <i className="fas fa-tag" style={{ fontSize: '0.875rem' }}></i>
+                      Pre-Applied Coupon
+                    </div>
+                    <div style={{
+                      fontSize: '0.75rem',
+                      color: '#1e7e34',
+                      fontWeight: '500',
+                      marginTop: '0.25rem',
+                      lineHeight: '1.3'
+                    }}>
+                      Course credit from previous purchases
                     </div>
                     {previousCourses.length > 0 && (
                       <div style={{
-                        fontSize: '0.75rem',
-                        color: '#7A2187',
-                        fontWeight: '500',
-                        marginTop: '0.25rem',
+                        fontSize: '0.7rem',
+                        color: '#6c757d',
+                        fontStyle: 'italic',
+                        marginTop: '0.125rem',
                         lineHeight: '1.3'
                       }}>
                         {previousCourses.map(course => course.name).join(', ')}
                       </div>
                     )}
                   </div>
-                  <span>-₹{userPreviousPurchases.toLocaleString('en-IN')}</span>
+                  <div style={{ textAlign: 'right' }}>
+                    <span style={{
+                      color: '#28A745',
+                      fontWeight: '700',
+                      fontSize: '0.9rem'
+                    }}>
+                      -₹{userPreviousPurchases.toLocaleString('en-IN')}
+                    </span>
+                    <div style={{
+                      fontSize: '0.65rem',
+                      color: '#1e7e34',
+                      fontWeight: '500',
+                      marginTop: '0.125rem'
+                    }}>
+                      AUTO APPLIED
+                    </div>
+                  </div>
                 </div>
               )}
 
