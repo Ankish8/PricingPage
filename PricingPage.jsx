@@ -1241,11 +1241,11 @@ const PricingPage = () => {
                 </div>
                 <div className="feature-item limited">
                   <i className="fas fa-exclamation-triangle feature-icon" style={{ color: '#FFC107' }}></i>
-                  <span>Limited course access (20%)</span>
+                  <span>Limited course access (20%)*</span>
                 </div>
                 <div className="feature-item limited">
                   <i className="fas fa-ban feature-icon" style={{ color: '#DC3545' }}></i>
-                  <span>No NCET Plus program access</span>
+                  <span>No NCET Plus program access*</span>
                 </div>
                 <div className="feature-item limited">
                   <i className="fas fa-ban feature-icon" style={{ color: '#DC3545' }}></i>
@@ -1261,8 +1261,20 @@ const PricingPage = () => {
                   height: 'auto'
                 }}
               >
-                Current Plan
+                Your current Plan
               </button>
+              
+              {/* Individual Services Note */}
+              <div style={{
+                textAlign: 'center',
+                marginTop: '0.75rem',
+                fontSize: '0.75rem',
+                color: '#9AA0A6',
+                fontStyle: 'italic',
+                lineHeight: '1.3'
+              }}>
+                * Individual services available for purchase separately
+              </div>
             </div>
 
             {/* Premium Card */}
@@ -2485,6 +2497,10 @@ Only ₹{selectedCycle === 'annual' ? '1,250' : '1,667'}/month
           </div>
           
           <FAQAccordion faqs={[
+            {
+              question: "Can I access individual features while on the Freemium plan?",
+              answer: "Yes! You can purchase specific services (like a course, mock test, or NCET Plus program) individually without upgrading to Premium."
+            },
             {
               question: "What happens to my NCET Plus access when I upgrade to Premium?",
               answer: "When you upgrade to Premium, your existing NCET Plus subscription is automatically included at no extra cost. You'll get full access to both live and recorded NCET Plus sessions, plus all the additional Premium benefits like unlimited job applications and weekly mentor calls."
