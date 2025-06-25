@@ -214,9 +214,9 @@ const PricingPage = () => {
   }, []);
   
   const priceData = {
-    monthly: { price: '₹2,000', period: '/month', savings: 0 },
-    halfyearly: { price: '₹10,000', period: '/6 months', savings: 4000 },
-    annual: { price: '₹15,000', period: '/year', savings: 9000 }
+    monthly: { price: '₹2,000', period: '/month', savings: 0, originalPrice: null },
+    halfyearly: { price: '₹10,000', period: '/6 months', savings: 2000, originalPrice: '₹12,000' },
+    annual: { price: '₹15,000', period: '/year', savings: 9000, originalPrice: '₹24,000' }
   };
 
   // Use animated number hook for savings
@@ -258,7 +258,7 @@ const PricingPage = () => {
     const earlyBirdDiscount = 0;
     const totalDiscount = earlyBirdDiscount + userPreviousPurchases;
     const finalPrice = selectedPrice - totalDiscount;
-    const originalPrice = selectedCycle === 'annual' ? 18000 : selectedCycle === 'halfyearly' ? 11000 : 2000;
+    const originalPrice = selectedCycle === 'annual' ? 24000 : selectedCycle === 'halfyearly' ? 12000 : 2000;
 
     // Mock course data for credit display
     const previousCourses = userPreviousPurchases > 0 ? [
@@ -320,25 +320,6 @@ const PricingPage = () => {
             textAlign: 'center', 
             marginBottom: '1.25rem'
           }}>
-            {/* Coupon Applied Badge */}
-            {userPreviousPurchases > 0 && (
-              <div style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.375rem',
-                background: 'linear-gradient(135deg, #28A745 0%, #34ce57 100%)',
-                color: 'white',
-                padding: '0.375rem 0.75rem',
-                borderRadius: '20px',
-                fontSize: '0.75rem',
-                fontWeight: '600',
-                marginBottom: '0.75rem',
-                boxShadow: '0 2px 8px rgba(40, 167, 69, 0.3)'
-              }}>
-                <i className="fas fa-check-circle" style={{ fontSize: '0.75rem' }}></i>
-                Coupon Applied - Save ₹{userPreviousPurchases.toLocaleString('en-IN')}
-              </div>
-            )}
             
             <h2 style={{
               fontSize: '1.5rem',
@@ -403,6 +384,35 @@ const PricingPage = () => {
                   ₹{originalPrice.toLocaleString('en-IN')}
                 </span>
               </div>
+
+              {/* Launch Price Discount */}
+              {(selectedCycle === 'annual' || selectedCycle === 'halfyearly') && (
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  marginBottom: '0.375rem',
+                  color: '#5F6368',
+                  fontSize: '0.8rem'
+                }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.375rem' }}>
+                    <i className="fas fa-tag" style={{ fontSize: '0.75rem', color: '#FF6B35' }}></i>
+                    <span>Launch Price Discount</span>
+                    <span style={{
+                      fontSize: '0.65rem',
+                      color: '#FF6B35',
+                      fontWeight: '500',
+                      padding: '0.125rem 0.25rem',
+                      background: 'rgba(255, 107, 53, 0.1)',
+                      borderRadius: '3px',
+                      marginLeft: '0.25rem'
+                    }}>
+                      LIMITED
+                    </span>
+                  </div>
+                  <span style={{ color: '#FF6B35', fontWeight: '600' }}>-₹{(originalPrice - selectedPrice).toLocaleString('en-IN')}</span>
+                </div>
+              )}
 
 
               {/* Pre-Applied Coupon / Course Credits */}
@@ -1296,6 +1306,35 @@ const PricingPage = () => {
               
               <div className="card-header">
                 <h3 className="plan-name">Premium</h3>
+                
+                {/* Original Price (Launch Pricing) */}
+                {priceData[selectedCycle].originalPrice && (
+                  <div style={{
+                    textAlign: 'center',
+                    marginBottom: '0.25rem'
+                  }}>
+                    <span style={{
+                      fontSize: '0.875rem',
+                      color: '#9AA0A6',
+                      textDecoration: 'line-through',
+                      fontWeight: '400'
+                    }}>
+                      {priceData[selectedCycle].originalPrice}
+                    </span>
+                    <span style={{
+                      fontSize: '0.75rem',
+                      color: '#FF6B35',
+                      fontWeight: '500',
+                      marginLeft: '0.5rem',
+                      padding: '0.125rem 0.375rem',
+                      background: 'rgba(255, 107, 53, 0.1)',
+                      borderRadius: '4px'
+                    }}>
+                      LAUNCH PRICE
+                    </span>
+                  </div>
+                )}
+                
                 <div className="price-container">
                   <span className="price">{priceData[selectedCycle].price}</span>
                   <span className="period">{priceData[selectedCycle].period}</span>
